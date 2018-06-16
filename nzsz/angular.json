@@ -95,6 +95,27 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/nzsz-server",
+            "main": "src/main.server.ts",
+            "tsConfig": "src/tsconfig.server.json"
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "browserTarget": "nzsz:build",
+            "serverTarget": "nzsz:server",
+            "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nzsz:build:production"
+            }
+          }
         }
       }
     },
