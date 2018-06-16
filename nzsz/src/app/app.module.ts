@@ -16,7 +16,7 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     RouterModule,
     BrowserAnimationsModule,
     MatButtonModule,

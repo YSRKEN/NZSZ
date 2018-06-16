@@ -50,14 +50,54 @@
             }
           }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+        "build2": {
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "browserTarget": "nzsz:build"
+            "outputPath": "dist/nzsz",
+            "baseHref": "/",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/manifest.json"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "browserTarget": "nzsz:build:production"
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "nzsz:build2"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nzsz:build2:production"
             }
           }
         },
