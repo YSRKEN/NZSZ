@@ -1,9 +1,66 @@
 <h1 style="text-align: center">NZSZ</h1>
-<div>
-  <mat-checkbox class="example-margin">チェック</mat-checkbox>
+<div style="margin: 5px">
+  <table style="width: 100%">
+    <tr style="height: 10px;">
+      <th colspan="7" style="text-align: center;background-color: lightblue">2018/06</th>
+    </tr>
+    <tr style="height: 10px">
+      <td style="text-align: center;color: red;font-weight: bold">日</td>
+      <td style="text-align: center;font-weight: bold">月</td>
+      <td style="text-align: center;font-weight: bold">火</td>
+      <td style="text-align: center;font-weight: bold">水</td>
+      <td style="text-align: center;font-weight: bold">木</td>
+      <td style="text-align: center;font-weight: bold">金</td>
+      <td style="text-align: center;color: blue;font-weight: bold">土</td>
+    </tr>
+    <tr style="height: 10px;">
+      <td style="text-align: center;background-color: lightgray">27</td>
+      <td style="text-align: center;background-color: lightgray">28</td>
+      <td style="text-align: center;background-color: lightgray">29</td>
+      <td style="text-align: center;background-color: lightgray">30</td>
+      <td style="text-align: center;background-color: lightgray">31</td>
+      <td style="text-align: center;background-color: lightgray">01</td>
+      <td style="text-align: center;background-color: lightgray">02</td>
+    </tr>
+    <tr style="height: 10px;">
+      <td style="text-align: center;background-color: lightgray">03</td>
+      <td style="text-align: center;background-color: lightgray">04</td>
+      <td style="text-align: center;background-color: lightgray">05</td>
+      <td style="text-align: center;background-color: lightgray">06</td>
+      <td style="text-align: center;background-color: lightgray">07</td>
+      <td style="text-align: center;background-color: lightgray">08</td>
+      <td style="text-align: center;background-color: lightgray">09</td>
+    </tr>
+    <tr style="height: 10px;">
+      <td style="text-align: center;background-color: lightgray">10</td>
+      <td style="text-align: center;background-color: lightgray">11</td>
+      <td style="text-align: center;background-color: lightgray">12</td>
+      <td style="text-align: center;background-color: lightgray">13</td>
+      <td style="text-align: center;background-color: lightgray">14</td>
+      <td style="text-align: center;background-color: lightgray">15</td>
+      <td style="text-align: center;background-color: lightgray">16</td>
+    </tr>
+    <tr style="height: 10px;">
+      <td style="text-align: center;background-color: lightcoral">17</td>
+      <td style="text-align: center;background-color: lightgray">18</td>
+      <td style="text-align: center;background-color: lightgray">19</td>
+      <td style="text-align: center;background-color: lightgray">20</td>
+      <td style="text-align: center;background-color: lightgray">21</td>
+      <td style="text-align: center;background-color: lightgray">22</td>
+      <td style="text-align: center;background-color: lightgray">23</td>
+    </tr>
+    <tr style="height: 10px;">
+      <td style="text-align: center;background-color: lightgray">24</td>
+      <td style="text-align: center;background-color: lightgray">25</td>
+      <td style="text-align: center;background-color: lightgray">26</td>
+      <td style="text-align: center;background-color: lightgray">27</td>
+      <td style="text-align: center;background-color: lightgray">28</td>
+      <td style="text-align: center;background-color: lightgray">29</td>
+      <td style="text-align: center;background-color: lightgray">30</td>
+    </tr>
+  </table>
 </div>
 <mat-list style="margin: 5px">
-    <h3 mat-subheader>配信予定</h3>
     <mat-list-item *ngFor="let liveInfo of LiveInfoList">
       <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length > 1">people</mat-icon>
       <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length <= 1">person</mat-icon>
