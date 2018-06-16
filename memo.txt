@@ -1,0 +1,6 @@
+・ng serveでデバッグ用ビルド
+　http://localhost:4200/
+・ng run nzsz:app-shell:productionで本番用ビルド
+　https://ysrken.github.io/NZSZ/
+・npx pushstate-server ../docsで本番用ビルドの動作テスト
+　http://localhost:9000/
