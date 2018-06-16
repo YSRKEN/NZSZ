@@ -1,0 +1,25 @@
+<h1 style="text-align: center">NZSZ</h1>
+<div>
+  <mat-checkbox class="example-margin">チェック</mat-checkbox>
+</div>
+<mat-list style="margin: 5px">
+    <h3 mat-subheader>配信予定</h3>
+    <mat-list-item *ngFor="let liveInfo of LiveInfoList">
+      <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length > 1">people</mat-icon>
+      <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length <= 1">person</mat-icon>
+      <div mat-line>
+        <span style="width: 40%;display: inline-block">{{liveInfo.site}}</span>
+        <span style="width: 60%;display: inline-block">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
+      </div>
+      <div mat-line>
+        <span style="width: 40%;display: inline-block">{{liveInfo.youtuber[0]}}</span>
+        <span style="width: 60%;display: inline-block">{{liveInfo.date | date: 'HH:mm ～'}}</span>
+      </div>
+    </mat-list-item>
+</mat-list>
+<div style="margin: 5px">
+  <button mat-raised-button color="primary" style="margin: 5px">公式</button>
+  <button mat-raised-button color="primary" style="margin: 5px">ライブ</button>
+  <button mat-raised-button color="primary" style="margin: 5px">タイマー</button>
+  <button mat-raised-button color="primary" style="margin: 5px">オプション</button>
+</div>
