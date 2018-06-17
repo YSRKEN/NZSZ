@@ -33,7 +33,18 @@
       "patterns": []
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "apis",
+      "patterns": [
+        "https:\\/\\/script\\.google\\.com\\/macros\\/s\\/[^\\/]*\\/exec"
+      ],
+      "strategy": "freshness",
+      "maxSize": 10,
+      "maxAge": 86400000,
+      "version": 1
+    }
+  ],
   "hashTable": {
     "./assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "./assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
@@ -45,12 +56,17 @@
     "./assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "./favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "./index.html": "8c5216b8567e8d92855eb5f87178c6ec731cc835",
     "./main.a1f505d87aefb804e0c3.js": "b615dcd6b1af75b8cc430eac52bf3ca37b94f601",
 =======
     "./index.html": "e9d4d759516d4eff3bc9d9289e79b4c0f750ddd3",
     "./main.9480de68e69d3a8722e4.js": "7f070002a388ea68f8fa65f0b4d8982305446462",
 >>>>>>> release/Ver.0.3.1
+=======
+    "./index.html": "e9d4d759516d4eff3bc9d9289e79b4c0f750ddd3",
+    "./main.9480de68e69d3a8722e4.js": "7f070002a388ea68f8fa65f0b4d8982305446462",
+>>>>>>> release/Ver.0.3.2
     "./polyfills.2f4a59095805af02bd79.js": "8949bb1b1e302dda246f6ed9c2da703270360b1f",
     "./runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
     "./styles.19a8ad47c7e8ec3eadad.css": "9991979f73edba4c46f6cc2bbbffe69cde8c9a77"
