@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatIconModule, MatListModule } from '@angular/material';
 import { MainComponent } from './main/main.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
