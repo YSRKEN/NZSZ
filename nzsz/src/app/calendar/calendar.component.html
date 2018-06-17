@@ -1,59 +1,22 @@
 <table class="w-100">
-  <tr class="h-10px">
-    <th colspan="7" class="text-center bg-lightblue">2018/06</th>
-  </tr>
-  <tr style="height: 10px">
-    <td class="text-center font-weight-bold color-red">日</td>
-    <td class="text-center font-weight-bold">月</td>
-    <td class="text-center font-weight-bold">火</td>
-    <td class="text-center font-weight-bold">水</td>
-    <td class="text-center font-weight-bold">木</td>
-    <td class="text-center font-weight-bold">金</td>
-    <td class="text-center font-weight-bold color-blue">土</td>
-  </tr>
-  <tr class="h-10px">
-    <td class="text-center bg-lightgray">27</td>
-    <td class="text-center bg-lightgray">28</td>
-    <td class="text-center bg-lightgray">29</td>
-    <td class="text-center bg-lightgray">30</td>
-    <td class="text-center bg-lightgray">31</td>
-    <td class="text-center bg-lightgray">01</td>
-    <td class="text-center bg-lightgray">02</td>
-  </tr>
-  <tr class="h-10px">
-    <td class="text-center bg-lightgray">03</td>
-    <td class="text-center bg-lightgray">04</td>
-    <td class="text-center bg-lightgray">05</td>
-    <td class="text-center bg-lightgray">06</td>
-    <td class="text-center bg-lightgray">07</td>
-    <td class="text-center bg-lightgray">08</td>
-    <td class="text-center bg-lightgray">09</td>
-  </tr>
-  <tr class="h-10px">
-    <td class="text-center bg-lightgray">10</td>
-    <td class="text-center bg-lightgray">11</td>
-    <td class="text-center bg-lightgray">12</td>
-    <td class="text-center bg-lightgray">13</td>
-    <td class="text-center bg-lightgray">14</td>
-    <td class="text-center bg-lightgray">15</td>
-    <td class="text-center bg-lightgray">16</td>
-  </tr>
-  <tr class="h-10px">
-    <td class="text-center bg-lightcoral">17</td>
-    <td class="text-center bg-lightgray">18</td>
-    <td class="text-center bg-lightgray">19</td>
-    <td class="text-center bg-lightgray">20</td>
-    <td class="text-center bg-lightgray">21</td>
-    <td class="text-center bg-lightgray">22</td>
-    <td class="text-center bg-lightgray">23</td>
-  </tr>
-  <tr class="h-10px">
-    <td class="text-center bg-lightgray">24</td>
-    <td class="text-center bg-lightgray">25</td>
-    <td class="text-center bg-lightgray">26</td>
-    <td class="text-center bg-lightgray">27</td>
-    <td class="text-center bg-lightgray">28</td>
-    <td class="text-center bg-lightgray">29</td>
-    <td class="text-center bg-lightgray">30</td>
-  </tr>
+    <tr class="h-10px">
+      <th colspan="7" class="text-center bg-lightblue">2018/06</th>
+    </tr>
+    <tr class="h-10px">
+      <td class="text-center font-weight-bold color-red">日</td>
+      <td class="text-center font-weight-bold">月</td>
+      <td class="text-center font-weight-bold">火</td>
+      <td class="text-center font-weight-bold">水</td>
+      <td class="text-center font-weight-bold">木</td>
+      <td class="text-center font-weight-bold">金</td>
+      <td class="text-center font-weight-bold color-blue">土</td>
+    </tr>
+    <tr class="h-10px" *ngFor="let weekLine of CalendarTable">
+      <td *ngFor="let dayData of weekLine" class="text-center"
+        [ngClass]="{'bg-lightcoral':dayData.todayFlg,
+          'bg-lightgray':!dayData.todayFlg,
+          'color-gray': !dayData.thisMonthFlg}">
+          {{dayData.value}}
+      </td>
+    </tr>
 </table>
