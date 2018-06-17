@@ -1,18 +1,18 @@
-<h1 style="text-align: center">にじさんじ</h1>
+<h1 class="text-center my-5px">にじさんじ</h1>
 <div class="m-5px">
   <app-calendar date="{{Today | date: 'yyyy-MM-dd'}}"></app-calendar>
 </div>
-<mat-list class="m-5px">
+<mat-list class="m-5px h-calc">
   <mat-list-item *ngFor="let liveInfo of LiveInfoList">
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length > 1">people</mat-icon>
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length <= 1">person</mat-icon>
     <div mat-line>
-      <span class="w-40 d-inline-block">{{liveInfo.site}}</span>
-      <span class="w-60 d-inline-block">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
+      <span class="w-60 d-inline-block">{{liveInfo.site | limitStr: 12}}</span>
+      <span class="w-40 d-inline-block">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
     </div>
     <div mat-line>
-      <span class="w-40 d-inline-block">{{liveInfo.youtuber[0]}}</span>
-      <span class="w-60 d-inline-block">{{liveInfo.date | date: 'HH:mm ～'}}</span>
+      <span class="w-60 d-inline-block">{{liveInfo.youtuber[0] | limitStr: 12}}</span>
+      <span class="w-40 d-inline-block">{{liveInfo.date | date: 'HH:mm ～'}}</span>
     </div>
   </mat-list-item>
 </mat-list>

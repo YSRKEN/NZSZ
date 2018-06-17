@@ -9,14 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatIconModule, MatListModule } from '@angular/material';
 import { MainComponent } from './main/main.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LimitStrPipe } from './limit-str.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    CalendarComponent
+    CalendarComponent,
+    LimitStrPipe
   ],
   imports: [
+    HttpClientModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

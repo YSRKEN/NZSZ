@@ -14,9 +14,13 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   async ngOnInit() {
-    // 配信データをダウンロードする
-    const liveInfoList = await WebApi.downloadLiveInfoList();
-    this.LiveInfoList = liveInfoList;
+    try{
+      // 配信データをダウンロードする
+      const liveInfoList = await WebApi.downloadLiveInfoList(this.Today);
+      this.LiveInfoList = liveInfoList;
+    }catch(e){
+      window.alert('ライブ情報を取得できませんでした。');
+    }
   }
 
   /** 今日の日付を返す */
