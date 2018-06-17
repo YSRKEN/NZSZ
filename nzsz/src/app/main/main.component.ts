@@ -8,7 +8,6 @@ import { LiveInfo } from '../api/LiveInfo';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
   /** 配信予定 */
   LiveInfoList: LiveInfo[];
 
@@ -20,4 +19,16 @@ export class MainComponent implements OnInit {
     this.LiveInfoList = liveInfoList;
   }
 
+  /** 今日の日付を返す */
+  get Today(): Date { 
+    return new Date();
+  }
+
+  /** にじさんじの公式サイト(Twitter垢)のページを開く */
+  jumpNzSzSite(){
+    window.open('https://twitter.com/nijisanji_app');
+  }
+  jumpNzSzLive(){
+    window.open('https://www.youtube.com/channel/UCX7YkU9nEeaoZbkVLVajcMg/videos');
+  }
 }
