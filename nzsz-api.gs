@@ -1,6 +1,9 @@
-function doGet() {
+function doGet(e) {
   // 参考→https://qiita.com/tfuruya/items/3c306ee03d1ac290bcef
-  var json = JSON.stringify(downloadLiveInfoList(2018, 6, 17));
+  var year = parseInt(e.parameter.year);
+  var month = parseInt(e.parameter.month);
+  var day = parseInt(e.parameter.day);
+  var json = JSON.stringify(downloadLiveInfoList(year, month, day));
   ContentService.createTextOutput();
   var output = ContentService.createTextOutput();
   output.setMimeType(ContentService.MimeType.JSON);
@@ -40,7 +43,7 @@ function downloadLiveInfoList(year, month, day) {
     var dateStr2 = '' + year + '/' + month + '/' + day + " " + hour + ":" + minute + ":00";
     var date2 = new Date(dateStr2);
     pushData["youtuber"] = crop(node, '<li>', '<img').replace(/.*>/, '');
-    pushData["date"] = Utilities.formatDate(date2,'Asia/Tokyo','yyyy-MM-dd HH-mm-ss');
+    pushData["date"] = Utilities.formatDate(date2,'Asia/Tokyo','yyyy/MM/dd HH:mm:ss');
     pushData["site"] = node.replace(/.*at:/, '').replace(/(<\/li|<br)$/, '').replace(/<.*?>/g, '').replace(/(^\s+)|(\s+$)/g, "").replace(/( |)時間変更/, '');
     pushData["url"] = crop(node, '<a class="ext" href="', '" rel="nofollow"').replace('http://re.wikiwiki.jp/?', '');
     result.push(pushData);

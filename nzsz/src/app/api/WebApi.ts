@@ -19,9 +19,9 @@ export class WebApi {
             url: string
         }]>(" https://script.google.com/macros/s/AKfycbyC6XzbNsX_bq9hD91Ab7Zp48mC1Ot1D3alMK9BqQ/exec",
         {params: {
-            year: "" + date.getFullYear,
-            month: "" + date.getMonth,
-            day: "" + date.getDate }}).toPromise();
+            year: "" + date.getFullYear(),
+            month: "" + (date.getMonth() + 1),
+            day: "" + date.getDate() }}).toPromise();
         return result.map((data) => {
             const liveInfo: LiveInfo = {
                 youtuber: [data.youtuber],
