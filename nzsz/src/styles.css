@@ -1,2 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* Bootcamp風のCSSを実装 */
+.w-100{
+    width: 100%;
+}
+.w-40{
+    width: 40%;
+}
+.w-60{
+    width: 60%;
+}
+.h-10px{
+    height: 10px;
+}
+.d-block{
+    display: block;
+}
+.d-inline{
+    display: inline;
+}
+.d-inline-block{
+    display: inline-block;
+}
+.d-none{
+    display: none;
+}
+.m-5px{
+    margin: 5px !important;
+}
+.ml-5px{
+    margin-left: 5px !important;
+}
+.mr-5px{
+    margin-right: 5px !important;
+}
+.my-5px{
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+.mx-5px{
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+.mx-auto{
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.text-center{
+    text-align: center;
+}
+.min-width-0{
+    min-width: 0 !important;
+}
+.bg-lightblue{
+    background-color: lightblue;
+}
+.bg-lightgray{
+    background-color: lightgray;
+}
+.bg-lightcoral{
+    background-color: lightcoral;
+}
+.color-red{
+    color: red;
+}
+.color-blue{
+    color: blue;
+}
+.font-weight-bold{
+    font-weight: bold;
+}

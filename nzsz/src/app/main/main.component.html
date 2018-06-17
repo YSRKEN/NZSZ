@@ -1,24 +1,24 @@
 <h1 style="text-align: center">にじさんじ</h1>
-<div style="margin: 5px">
+<div class="m-5px">
   <app-calendar></app-calendar>
 </div>
-<mat-list style="margin: 5px">
+<mat-list class="m-5px">
   <mat-list-item *ngFor="let liveInfo of LiveInfoList">
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length > 1">people</mat-icon>
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length <= 1">person</mat-icon>
     <div mat-line>
-      <span style="width: 40%;display: inline-block">{{liveInfo.site}}</span>
-      <span style="width: 60%;display: inline-block">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
+      <span class="w-40 d-inline-block">{{liveInfo.site}}</span>
+      <span class="w-60 d-inline-block">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
     </div>
     <div mat-line>
-      <span style="width: 40%;display: inline-block">{{liveInfo.youtuber[0]}}</span>
-      <span style="width: 60%;display: inline-block">{{liveInfo.date | date: 'HH:mm ～'}}</span>
+      <span class="w-40 d-inline-block">{{liveInfo.youtuber[0]}}</span>
+      <span class="w-60 d-inline-block">{{liveInfo.date | date: 'HH:mm ～'}}</span>
     </div>
   </mat-list-item>
 </mat-list>
-<div style="margin: 5px;">
-  <button mat-raised-button color="primary" style="margin: 5px;min-width: 0 !important">公式</button>
-  <button mat-raised-button color="primary" style="margin: 5px;min-width: 0 !important">ライブ</button>
-  <button mat-raised-button color="primary" style="margin: 5px;min-width: 0 !important">タイマー</button>
-  <button mat-raised-button color="primary" style="margin: 5px;min-width: 0 !important">設定</button>
+<div class="my-5px text-center">
+  <button mat-raised-button color="primary" class="my-5px mr-5px min-width-0">公式</button>
+  <button mat-raised-button color="primary" class="m-5px min-width-0">ライブ</button>
+  <button mat-raised-button color="primary" class="m-5px min-width-0">タイマー</button>
+  <button mat-raised-button color="primary" class="my-5px ml-5px min-width-0">設定</button>
 </div>
