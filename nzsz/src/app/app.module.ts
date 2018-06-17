@@ -10,12 +10,14 @@ import { MatButtonModule, MatCheckboxModule, MatIconModule, MatListModule } from
 import { MainComponent } from './main/main.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LimitStrPipe } from './limit-str.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    CalendarComponent
+    CalendarComponent,
+    LimitStrPipe
   ],
   imports: [
     HttpClientModule,

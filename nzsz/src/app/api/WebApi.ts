@@ -22,7 +22,6 @@ export class WebApi {
             year: "" + date.getFullYear,
             month: "" + date.getMonth,
             day: "" + date.getDate }}).toPromise();
-        console.log(result);
         return result.map((data) => {
             const liveInfo: LiveInfo = {
                 youtuber: [data.youtuber],
@@ -30,7 +29,6 @@ export class WebApi {
                 site: data.site,
                 url: data.url
             };
-            console.log(liveInfo);
             return liveInfo;
         });
     }
