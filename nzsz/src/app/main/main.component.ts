@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
 
   async ngOnInit() {
     // 配信データをダウンロードする
-    const liveInfoList = await WebApi.downloadLiveInfoList();
+    const liveInfoList = await WebApi.downloadLiveInfoList(this.Today);
     this.LiveInfoList = liveInfoList;
   }
 
