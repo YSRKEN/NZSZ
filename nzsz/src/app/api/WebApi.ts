@@ -17,11 +17,12 @@ export class WebApi {
             date: string,
             site: string,
             url: string
-        }]>(" https://script.google.com/macros/s/AKfycbyC6XzbNsX_bq9hD91Ab7Zp48mC1Ot1D3alMK9BqQ/exec",
+        }]>("https://script.google.com/macros/s/AKfycbwdfMKMm6-Q30vCMz-1hv-xETgrpJYS0Ca1ZeJI7S7KSwu4kDXS/exec",
         {params: {
             year: "" + date.getFullYear(),
             month: "" + (date.getMonth() + 1),
-            day: "" + date.getDate() }}).toPromise();
+            day: "" + date.getDate()
+        }}).toPromise();
         return result.map((data) => {
             const liveInfo: LiveInfo = {
                 youtuber: [data.youtuber],
