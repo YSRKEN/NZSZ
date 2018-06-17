@@ -7,7 +7,7 @@
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length > 1">people</mat-icon>
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length <= 1">person</mat-icon>
     <div mat-line>
-      <span class="w-60 d-inline-block">{{liveInfo.site | limitStr: 14}}</span>
+      <span class="w-60 d-inline-block">{{liveInfo.site | limitStr: 12}}</span>
       <span class="w-40 d-inline-block">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
     </div>
     <div mat-line>
