@@ -8,7 +8,6 @@ import { LiveInfo } from '../api/LiveInfo';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
   /** 配信予定 */
   LiveInfoList: LiveInfo[];
 
@@ -20,4 +19,7 @@ export class MainComponent implements OnInit {
     this.LiveInfoList = liveInfoList;
   }
 
+  get Today(): Date { 
+    return new Date();
+  }
 }

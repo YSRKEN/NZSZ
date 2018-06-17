@@ -1,6 +1,6 @@
 <h1 style="text-align: center">にじさんじ</h1>
 <div class="m-5px">
-  <app-calendar></app-calendar>
+  <app-calendar date="{{Today | date: 'yyyy-MM-dd'}}"></app-calendar>
 </div>
 <mat-list class="m-5px">
   <mat-list-item *ngFor="let liveInfo of LiveInfoList">
