@@ -43,11 +43,14 @@ export class MainComponent implements OnInit {
   jumpNzSzLive(){
     window.open('https://www.youtube.com/channel/UCX7YkU9nEeaoZbkVLVajcMg/videos');
   }
+  /** 任意のページを開く */
+  jumpOtherPage(url: string){
+    window.open(url);
+  }
   /** タップした日付にカレンダーの日付を変更する */
   async onTap(date: Date){
     await this.refreshLiveInfoList(date);
   }
-
 
   /** バージョン情報を表示する */
   showVersionInfo(){

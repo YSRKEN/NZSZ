@@ -3,7 +3,8 @@
   <app-calendar date="{{Today | date: 'yyyy-MM-dd'}}" (onTap)="onTap($event)"></app-calendar>
 </div>
 <mat-list class="overflow-auto vh-42 my-1vh w-100">
-  <mat-list-item *ngFor="let liveInfo of LiveInfoList">
+  <mat-list-item *ngFor="let liveInfo of LiveInfoList"
+    (click)="jumpOtherPage(liveInfo.url)">
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length > 1">people</mat-icon>
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length <= 1">person</mat-icon>
     <div mat-line>
