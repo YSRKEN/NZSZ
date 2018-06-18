@@ -22,7 +22,7 @@ export class CalendarComponent implements OnInit {
     for(var y = 0; y < CalendarComponent.height; ++y){
       const weekLine: DayInfo[] = [];
       for(var x = 0; x < CalendarComponent.width; ++x){
-        weekLine.push(new DayInfo(0));
+        weekLine.push(new DayInfo());
       }
       this.CalendarTable.push(weekLine);
     }
@@ -42,13 +42,8 @@ export class CalendarComponent implements OnInit {
     for(var y = 0; y < CalendarComponent.height; ++y){
       for(var x = 0; x < CalendarComponent.width; ++x){
         const setDayData = this.CalendarTable[y][x];
-        setDayData.value = beginDay.date();
-        if(today.month() != beginDay.month()){
-          setDayData.thisMonthFlg = false;
-        }
-        if(beginDay.format("YYYY-MM-DD") == today.format("YYYY-MM-DD")){
-          setDayData.todayFlg = true;
-        }
+        setDayData.date = beginDay.toDate();
+        setDayData.setFlgs(today.toDate());
         beginDay.add(1, "day");
       }
     }
@@ -56,14 +51,19 @@ export class CalendarComponent implements OnInit {
 }
 
 class DayInfo{
-  // 日付
-  value: number;
+  // 正確な日付
+  date: Date;
   // 「今日」を表すか？
   todayFlg: boolean = false;
   // 「今月」の日付か？
   thisMonthFlg: boolean = true;
-  // コンストラクタ
-  constructor(value: number){
-    this.value = value;
+  // 日付の数字
+  get value(): number{
+    return this.date.getDate();
+  }
+  // 2つのフラグを、別の日付との比較から判定
+  setFlgs(date: Date): void{
+    this.todayFlg = (moment(date).format("YYYY-MM-DD") == moment(this.date).format("YYYY-MM-DD"));
+    this.thisMonthFlg = (date.getMonth() == this.date.getMonth());
   }
 }
