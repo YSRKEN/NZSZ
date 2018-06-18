@@ -1,9 +1,10 @@
-<h1 class="text-center my-5px">にじさんじ</h1>
-<div class="m-5px">
-  <app-calendar date="{{Today | date: 'yyyy-MM-dd'}}"></app-calendar>
+<h1 class="text-center my-1vh font-size-vh-5" (click)="showVersionInfo()">にじさんじ</h1>
+<div class="my-1vh">
+  <app-calendar date="{{Today | date: 'yyyy-MM-dd'}}" (onTap)="onTap($event)"></app-calendar>
 </div>
-<mat-list class="m-5px h-calc">
-  <mat-list-item *ngFor="let liveInfo of LiveInfoList">
+<mat-list class="overflow-auto vh-42 my-1vh w-100">
+  <mat-list-item *ngFor="let liveInfo of LiveInfoList"
+    (click)="jumpOtherPage(liveInfo.url)">
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length > 1">people</mat-icon>
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length <= 1">person</mat-icon>
     <div mat-line>
@@ -16,11 +17,13 @@
     </div>
   </mat-list-item>
 </mat-list>
-<div class="my-5px text-center">
-  <button mat-raised-button color="primary" class="my-5px mr-5px min-width-0"
+<div class="my-2vh text-center">
+  <button mat-raised-button color="primary" class="mr-2vw my-1vh min-width-0 vh-6 font-size-vh-2"
     (click)="jumpNzSzSite()">公式</button>
-  <button mat-raised-button color="primary" class="m-5px min-width-0"
+  <button mat-raised-button color="primary" class="mx-2vw my-1vh min-width-0 vh-6 font-size-vh-2"
     (click)="jumpNzSzLive()">ライブ</button>
-  <button mat-raised-button color="primary" class="m-5px min-width-0">タイマー</button>
-  <button mat-raised-button color="primary" class="my-5px ml-5px min-width-0">設定</button>
+  <button mat-raised-button color="primary" class="mx-2vw my-1vh min-width-0 vh-6 font-size-vh-2">
+    タイマー</button>
+  <button mat-raised-button color="primary" class="ml-2vw my-1vh min-width-0 vh-6 font-size-vh-2">
+    設定</button>
 </div>
