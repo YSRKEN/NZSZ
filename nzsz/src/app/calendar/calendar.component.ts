@@ -16,6 +16,8 @@ export class CalendarComponent implements OnInit {
   private static readonly height: number = 5;
   /* CalendarTableの横の大きさ */
   private static readonly width: number = 7;
+  /** 今日の日付 */
+  private today: moment.Moment = moment();
 
   constructor() {
     // カレンダーのマス数だけ、情報を揃える
@@ -38,12 +40,12 @@ export class CalendarComponent implements OnInit {
     // カレンダー左上の日付を取得する
     const beginDay = moment(date).startOf("month").day(0);
     // カレンダーの各日付における情報をセットする
-    const today = moment(date);
+    this.today = moment(date);
     for(var y = 0; y < CalendarComponent.height; ++y){
       for(var x = 0; x < CalendarComponent.width; ++x){
         const setDayData = this.CalendarTable[y][x];
         setDayData.date = beginDay.toDate();
-        setDayData.setFlgs(today.toDate());
+        setDayData.setFlgs(this.today.toDate());
         beginDay.add(1, "day");
       }
     }
@@ -53,6 +55,27 @@ export class CalendarComponent implements OnInit {
   @Output() onTap = new EventEmitter<Date>();
   tap(date: Date){
     this.onTap.emit(date);
+  }
+
+  // 1年戻す
+  backOneYear(){
+    let date = this.today.clone();
+    this.onTap.emit(date.add(-1, "year").toDate());
+  }
+  // 1ヶ月戻す
+  backOneMonth(){
+    let date = this.today.clone();
+    this.onTap.emit(date.add(-1, "month").toDate());
+  }
+  // 1ヶ月進める
+  forwardOneMonth(){
+    let date = this.today.clone();
+    this.onTap.emit(date.add(1, "month").toDate());
+  }
+  // 1年進める
+  forwardOneYear(){
+    let date = this.today.clone();
+    this.onTap.emit(date.add(1, "year").toDate());
   }
 }
 
