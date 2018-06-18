@@ -12,18 +12,27 @@ export class MainComponent implements OnInit {
   LiveInfoList: LiveInfo[];
   /** 選択されている日付 */
   Today: Date = new Date();
+  /** ソフトウェアのバージョン */
+  Version: string = "Ver.0.4";
+  /** 最終更新日 */
+  LastUpdate: string = "2018/06/18";
 
-  constructor() { }
-
-  async ngOnInit() {
+  /** 配信予定を更新する */
+  private async refreshLiveInfoList(date: Date){
     try{
       // 配信データをダウンロードする
-      const list = await WebApi.downloadLiveInfoList(this.Today);
-      this.LiveInfoList = list;
+      this.LiveInfoList = await WebApi.downloadLiveInfoList(date);
     }catch(e){
       this.LiveInfoList = [];
       window.alert('ライブ情報を取得できませんでした。');
     }
+    this.Today = date;
+  }
+
+  constructor() { }
+
+  async ngOnInit() {
+    await this.refreshLiveInfoList(this.Today);
   }
 
   /** にじさんじの公式サイト(Twitter垢)のページを開く */
@@ -36,13 +45,12 @@ export class MainComponent implements OnInit {
   }
   /** タップした日付にカレンダーの日付を変更する */
   async onTap(date: Date){
-    try{
-      // 配信データをダウンロードする
-      this.LiveInfoList = await WebApi.downloadLiveInfoList(date);
-    }catch(e){
-      this.LiveInfoList = [];
-      window.alert('ライブ情報を取得できませんでした。');
-    }
-    this.Today = date;
+    await this.refreshLiveInfoList(date);
+  }
+
+
+  /** バージョン情報を表示する */
+  showVersionInfo(){
+    window.alert("にじさんじ配信アプリ「NZSZ」\nバージョン：" + this.Version + "\n最終更新日：" + this.LastUpdate);
   }
 }
