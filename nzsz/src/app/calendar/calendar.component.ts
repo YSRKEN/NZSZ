@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -47,6 +47,12 @@ export class CalendarComponent implements OnInit {
         beginDay.add(1, "day");
       }
     }
+  }
+
+  // タップされた日付を親に受け渡す
+  @Output() onTap = new EventEmitter<Date>();
+  tap(date: Date){
+    this.onTap.emit(date);
   }
 }
 

@@ -10,29 +10,37 @@ import { LiveInfo } from '../api/LiveInfo';
 export class MainComponent implements OnInit {
   /** 配信予定 */
   LiveInfoList: LiveInfo[];
+  /** 選択されている日付 */
+  Today: Date = new Date();
 
   constructor() { }
 
   async ngOnInit() {
     try{
       // 配信データをダウンロードする
-      const liveInfoList = await WebApi.downloadLiveInfoList(this.Today);
-      this.LiveInfoList = liveInfoList;
+      const list = await WebApi.downloadLiveInfoList(this.Today);
+      this.LiveInfoList = list;
     }catch(e){
       window.alert('ライブ情報を取得できませんでした。');
     }
-  }
-
-  /** 今日の日付を返す */
-  get Today(): Date { 
-    return new Date();
   }
 
   /** にじさんじの公式サイト(Twitter垢)のページを開く */
   jumpNzSzSite(){
     window.open('https://twitter.com/nijisanji_app');
   }
+  /** にじさんじの公式チャンネル(Youtube)のページを開く */
   jumpNzSzLive(){
     window.open('https://www.youtube.com/channel/UCX7YkU9nEeaoZbkVLVajcMg/videos');
+  }
+  /** タップした日付にカレンダーの日付を変更する */
+  async onTap(date: Date){
+    try{
+      // 配信データをダウンロードする
+      this.LiveInfoList = await WebApi.downloadLiveInfoList(date);
+      this.Today = date;
+    }catch(e){
+      window.alert('ライブ情報を取得できませんでした。');
+    }
   }
 }

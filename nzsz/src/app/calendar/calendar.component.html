@@ -15,7 +15,8 @@
       <td *ngFor="let dayData of weekLine" class="text-center"
         [ngClass]="{'bg-lightcoral':dayData.todayFlg,
           'bg-lightgray':!dayData.todayFlg,
-          'color-gray': !dayData.thisMonthFlg}">
+          'color-gray': !dayData.thisMonthFlg}"
+        (click)="tap(dayData.date)">
           {{dayData.value}}
       </td>
     </tr>
