@@ -21,6 +21,7 @@ export class MainComponent implements OnInit {
       const list = await WebApi.downloadLiveInfoList(this.Today);
       this.LiveInfoList = list;
     }catch(e){
+      this.LiveInfoList = [];
       window.alert('ライブ情報を取得できませんでした。');
     }
   }
@@ -38,9 +39,10 @@ export class MainComponent implements OnInit {
     try{
       // 配信データをダウンロードする
       this.LiveInfoList = await WebApi.downloadLiveInfoList(date);
-      this.Today = date;
     }catch(e){
+      this.LiveInfoList = [];
       window.alert('ライブ情報を取得できませんでした。');
     }
+    this.Today = date;
   }
 }
