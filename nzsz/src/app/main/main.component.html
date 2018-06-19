@@ -2,7 +2,8 @@
 <div class="my-1vh">
   <app-calendar date="{{Today | date: 'yyyy-MM-dd'}}" (onTap)="onTap($event)"></app-calendar>
 </div>
-<mat-list class="overflow-auto vh-42 my-1vh w-100" *ngIf="LiveInfoList.length > 0">
+<mat-list class="overflow-auto vh-42 my-1vh w-100"
+  *ngIf="LiveInfoList.length > 0 && !ProgressSpinnerFlg">
   <mat-list-item *ngFor="let liveInfo of LiveInfoList"
     (click)="jumpOtherPage(liveInfo.url)">
     <mat-icon mat-list-icon *ngIf="liveInfo.youtuber.length > 1">people</mat-icon>
@@ -17,8 +18,11 @@
     </div>
   </mat-list-item>
 </mat-list>
+<div class="vh-42 w-100 overflow-auto" *ngIf="ProgressSpinnerFlg">
+  <mat-spinner mode="indeterminate" class="mx-auto" style="margin-top:20%"></mat-spinner>
+</div>
 <p class="vh-42 my-1vh w-100 text-center line-vh-42 font-size-vh-4"
-  *ngIf="LiveInfoList.length == 0">
+  *ngIf="LiveInfoList.length == 0 && !ProgressSpinnerFlg">
   配信予定はありません。
 </p>
 <div class="my-2vh text-center">

@@ -16,15 +16,20 @@ export class MainComponent implements OnInit {
   Version: string = "Ver.0.4";
   /** 最終更新日 */
   LastUpdate: string = "2018/06/18";
+  /** くるくる表示をするか？ */
+  ProgressSpinnerFlg: boolean = false;
 
   /** 配信予定を更新する */
   private async refreshLiveInfoList(date: Date){
     try{
+      this.ProgressSpinnerFlg = true;
       // 配信データをダウンロードする
       this.LiveInfoList = await WebApi.downloadLiveInfoList(date);
     }catch(e){
       this.LiveInfoList = [];
       window.alert('ライブ情報を取得できませんでした。');
+    }finally{
+      this.ProgressSpinnerFlg = false;
     }
     this.Today = date;
   }
