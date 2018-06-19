@@ -9,7 +9,7 @@ import { LiveInfo } from '../api/LiveInfo';
 })
 export class MainComponent implements OnInit {
   /** 配信予定 */
-  LiveInfoList: LiveInfo[];
+  LiveInfoList: LiveInfo[] = [];
   /** 選択されている日付 */
   Today: Date = new Date();
   /** ソフトウェアのバージョン */
