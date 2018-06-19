@@ -64,6 +64,11 @@ export class MainComponent implements OnInit {
   async onTap(date: Date){
     await this.refreshLiveInfoList(date);
   }
+  /** 通知タイマーを設定する */
+  setTimer(liveInfo: LiveInfo){
+    this.settings.addTimerLiveInfoList(liveInfo);
+    window.alert('通知タイマーを設定しました。');
+  }
 
   /** バージョン情報を表示する */
   showVersionInfo(){
