@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LimitStrPipe } from './limit-str.pipe';
 import { OptionComponent } from './option/option.component';
 import { SettingsService } from './settings.service';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [ // 追加
   { path: '', component: MainComponent },
@@ -39,6 +40,7 @@ const appRoutes: Routes = [ // 追加
     MatIconModule,
     MatListModule,
     MatProgressSpinnerModule,
+    FormsModule
   ],
   providers: [SettingsService],
   bootstrap: [AppComponent]

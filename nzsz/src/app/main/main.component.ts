@@ -41,8 +41,6 @@ export class MainComponent implements OnInit {
   async ngOnInit() {
     if(this.settings.AutoLoadFlg){
       await this.refreshLiveInfoList(this.Today);
-    }else{
-      this.settings.AutoLoadFlg = true;
     }
   }
 
