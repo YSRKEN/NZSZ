@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebApi } from '../api/WebApi';
 import { LiveInfo } from '../api/LiveInfo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -34,7 +35,7 @@ export class MainComponent implements OnInit {
     this.Today = date;
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   async ngOnInit() {
     await this.refreshLiveInfoList(this.Today);
@@ -51,6 +52,10 @@ export class MainComponent implements OnInit {
   /** 任意のページを開く */
   jumpOtherPage(url: string){
     window.open(url);
+  }
+  /** オプション画面に遷移 */
+  navigateOption(){
+    this.router.navigate(['/option']);
   }
   /** タップした日付にカレンダーの日付を変更する */
   async onTap(date: Date){
