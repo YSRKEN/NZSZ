@@ -56,6 +56,10 @@ export class MainComponent implements OnInit {
   jumpOtherPage(url: string){
     window.open(url);
   }
+  /** タイマー画面に遷移 */
+  navigateTimer(){
+    this.router.navigate(['/timer']);
+  }
   /** オプション画面に遷移 */
   navigateOption(){
     this.router.navigate(['/option']);

@@ -14,10 +14,12 @@ import { LimitStrPipe } from './limit-str.pipe';
 import { OptionComponent } from './option/option.component';
 import { SettingsService } from './settings.service';
 import { FormsModule } from '@angular/forms';
+import { TimerComponent } from './timer/timer.component';
 
 const appRoutes: Routes = [ // 追加
   { path: '', component: MainComponent },
   { path: 'option', component: OptionComponent },
+  { path: 'timer', component: TimerComponent }
 ];
 
 @NgModule({
@@ -27,6 +29,7 @@ const appRoutes: Routes = [ // 追加
     CalendarComponent,
     LimitStrPipe,
     OptionComponent,
+    TimerComponent,
   ],
   imports: [
     HttpClientModule,
