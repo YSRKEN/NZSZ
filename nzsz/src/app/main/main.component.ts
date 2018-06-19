@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebApi } from '../api/WebApi';
 import { LiveInfo } from '../api/LiveInfo';
 import { Router } from '@angular/router';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-main',
@@ -35,10 +36,14 @@ export class MainComponent implements OnInit {
     this.Today = date;
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private settings: SettingsService) { }
 
   async ngOnInit() {
-    await this.refreshLiveInfoList(this.Today);
+    if(this.settings.AutoLoadFlg){
+      await this.refreshLiveInfoList(this.Today);
+    }else{
+      this.settings.AutoLoadFlg = true;
+    }
   }
 
   /** にじさんじの公式サイト(Twitter垢)のページを開く */

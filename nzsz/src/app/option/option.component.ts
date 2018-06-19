@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-option',
@@ -8,12 +9,18 @@ import { Router } from '@angular/router';
 })
 export class OptionComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  AutoLoadFlg: boolean = this.settings.AutoLoadFlg;
+
+  constructor(private router: Router, private settings: SettingsService) {}
 
   ngOnInit() {}
 
   /** メイン画面に遷移 */
   navigateMain(){
     this.router.navigate(['/']);
+  }
+
+  changeAutoLoadFlg(){
+    this.settings.AutoLoadFlg = this.AutoLoadFlg;
   }
 }

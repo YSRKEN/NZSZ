@@ -6,12 +6,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule, MatListModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatListModule, MatProgressSpinnerModule, MatCheckboxModule } from '@angular/material';
 import { MainComponent } from './main/main.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LimitStrPipe } from './limit-str.pipe';
 import { OptionComponent } from './option/option.component';
+import { SettingsService } from './settings.service';
 
 const appRoutes: Routes = [ // 追加
   { path: '', component: MainComponent },
@@ -24,7 +25,7 @@ const appRoutes: Routes = [ // 追加
     MainComponent,
     CalendarComponent,
     LimitStrPipe,
-    OptionComponent
+    OptionComponent,
   ],
   imports: [
     HttpClientModule,
@@ -37,9 +38,9 @@ const appRoutes: Routes = [ // 追加
     MatCheckboxModule,
     MatIconModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
