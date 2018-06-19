@@ -15,9 +15,9 @@ export class MainComponent implements OnInit {
   /** 選択されている日付 */
   Today: Date = new Date();
   /** ソフトウェアのバージョン */
-  Version: string = "Ver.0.4";
+  Version: string = "Ver.0.5";
   /** 最終更新日 */
-  LastUpdate: string = "2018/06/18";
+  LastUpdate: string = "2018/06/20";
   /** くるくる表示をするか？ */
   ProgressSpinnerFlg: boolean = false;
 
