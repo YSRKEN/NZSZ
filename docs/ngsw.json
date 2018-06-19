@@ -9,10 +9,10 @@
       "urls": [
         "./favicon.ico",
         "./index.html",
-        "./main.c01643af415ddaf5e16d.js",
+        "./main.81b72b5ece1c47844e32.js",
         "./polyfills.2f4a59095805af02bd79.js",
         "./runtime.a66f828dca56eeb90e02.js",
-        "./styles.457a296818844acfa63b.css"
+        "./styles.226235723faa1e1e405f.css"
       ],
       "patterns": []
     },
@@ -58,6 +58,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "./index.html": "8c5216b8567e8d92855eb5f87178c6ec731cc835",
     "./main.a1f505d87aefb804e0c3.js": "b615dcd6b1af75b8cc430eac52bf3ca37b94f601",
 =======
@@ -78,6 +79,13 @@
     "./runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
     "./styles.457a296818844acfa63b.css": "b266c229d0828cb5220de4fe20e454314dcd308a"
 >>>>>>> release/Ver.0.4
+=======
+    "./index.html": "601bc2b153b4bdf16d6f6f977cd452bbea7e5558",
+    "./main.81b72b5ece1c47844e32.js": "a64eefc6ef1d4f6b65f5118aba90968827bfb1d5",
+    "./polyfills.2f4a59095805af02bd79.js": "8949bb1b1e302dda246f6ed9c2da703270360b1f",
+    "./runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
+    "./styles.226235723faa1e1e405f.css": "d546a97d1b2a7eb92f465e75ae3da2fcca3998e3"
+>>>>>>> release/Ver.0.5
   },
   "navigationUrls": [
     {

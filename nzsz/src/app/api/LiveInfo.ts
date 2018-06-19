@@ -1,7 +1,7 @@
 /** VYoutuberによる配信情報 */
 export class LiveInfo {
     /** 配信者名 */
-    youtuber: string[];
+    youtuber: string;
     /** 配信日時 */
     date: Date;
     /** 配信サイト */

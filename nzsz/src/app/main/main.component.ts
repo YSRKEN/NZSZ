@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WebApi } from '../api/WebApi';
 import { LiveInfo } from '../api/LiveInfo';
+import { Router } from '@angular/router';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-main',
@@ -9,30 +11,37 @@ import { LiveInfo } from '../api/LiveInfo';
 })
 export class MainComponent implements OnInit {
   /** 配信予定 */
-  LiveInfoList: LiveInfo[];
+  LiveInfoList: LiveInfo[] = [];
   /** 選択されている日付 */
   Today: Date = new Date();
   /** ソフトウェアのバージョン */
-  Version: string = "Ver.0.4";
+  Version: string = "Ver.0.5";
   /** 最終更新日 */
-  LastUpdate: string = "2018/06/18";
+  LastUpdate: string = "2018/06/20";
+  /** くるくる表示をするか？ */
+  ProgressSpinnerFlg: boolean = false;
 
   /** 配信予定を更新する */
   private async refreshLiveInfoList(date: Date){
     try{
+      this.ProgressSpinnerFlg = true;
       // 配信データをダウンロードする
       this.LiveInfoList = await WebApi.downloadLiveInfoList(date);
     }catch(e){
       this.LiveInfoList = [];
       window.alert('ライブ情報を取得できませんでした。');
+    }finally{
+      this.ProgressSpinnerFlg = false;
     }
     this.Today = date;
   }
 
-  constructor() { }
+  constructor(private router: Router, private settings: SettingsService) { }
 
   async ngOnInit() {
-    await this.refreshLiveInfoList(this.Today);
+    if(this.settings.AutoLoadFlg){
+      await this.refreshLiveInfoList(this.Today);
+    }
   }
 
   /** にじさんじの公式サイト(Twitter垢)のページを開く */
@@ -47,9 +56,22 @@ export class MainComponent implements OnInit {
   jumpOtherPage(url: string){
     window.open(url);
   }
+  /** タイマー画面に遷移 */
+  navigateTimer(){
+    this.router.navigate(['/timer']);
+  }
+  /** オプション画面に遷移 */
+  navigateOption(){
+    this.router.navigate(['/option']);
+  }
   /** タップした日付にカレンダーの日付を変更する */
   async onTap(date: Date){
     await this.refreshLiveInfoList(date);
+  }
+  /** 通知タイマーを設定する */
+  setTimer(liveInfo: LiveInfo){
+    this.settings.addTimerLiveInfoList(liveInfo);
+    window.alert('通知タイマーを設定しました。');
   }
 
   /** バージョン情報を表示する */

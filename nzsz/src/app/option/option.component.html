@@ -1,0 +1,11 @@
+<h1 class="text-center my-3vh font-size-vh-5">オプション画面</h1>
+<div class="my-2vh text-center">
+  <mat-checkbox [(ngModel)]="AutoLoadFlg" class="font-size-vh-2_5" (change)="changeAutoLoadFlg()">
+    起動時に今日の予定を読み込む
+  </mat-checkbox>
+</div>
+<div class="my-2vh text-center">
+  <button mat-raised-button color="primary" class="ml-2vw my-1vh min-width-0 vh-6 font-size-vh-2"
+  (click)="navigateMain()">
+    メイン画面に戻る</button>
+</div>

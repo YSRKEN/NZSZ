@@ -25,7 +25,7 @@ export class WebApi {
         }}).toPromise();
         return result.map((data) => {
             const liveInfo: LiveInfo = {
-                youtuber: [data.youtuber],
+                youtuber: data.youtuber,
                 date: new Date(data.date),
                 site: data.site,
                 url: data.url
