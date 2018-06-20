@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
   /** くるくる表示をするか？ */
   ProgressSpinnerFlg: boolean = false;
   /** リビジョン */
-  readonly revision: number = 7;
+  readonly revision: number = 8;
 
   /** 配信予定を更新する */
   private async refreshLiveInfoList(date: Date){

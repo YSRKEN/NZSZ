@@ -33,6 +33,7 @@ export class WebApi {
             return liveInfo;
         });
     }
+    /** リビジョン情報を取得する */
     static async downloadRevision(): Promise<number>{
         const result = await WebApi.http.get<{"revision": string}>
             ("https://script.google.com/macros/s/AKfycbxMAXjAVnDg4phbeK1WvVc90QICkVszTjYVmQ5FHkmuZqRnGeI/exec")
