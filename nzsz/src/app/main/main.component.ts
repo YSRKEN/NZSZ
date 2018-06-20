@@ -20,6 +20,8 @@ export class MainComponent implements OnInit {
   LastUpdate: string = "2018/06/20";
   /** くるくる表示をするか？ */
   ProgressSpinnerFlg: boolean = false;
+  /** リビジョン */
+  readonly revision: number = 7;
 
   /** 配信予定を更新する */
   private async refreshLiveInfoList(date: Date){
@@ -39,9 +41,18 @@ export class MainComponent implements OnInit {
   constructor(private router: Router, private settings: SettingsService) { }
 
   async ngOnInit() {
+    // 自動読み込みの設定
     if(this.settings.AutoLoadFlg){
       await this.refreshLiveInfoList(this.Today);
     }
+    // バージョンチェック
+    const latestRevision = await WebApi.downloadRevision();
+    if(latestRevision > this.revision){
+      if(!this.settings.RevisionCheckFlg){
+        window.alert("アプリが最新版ではありません。\nChromeのキャッシュをクリアしてから\n再度起動し直してください。");
+      }
+    }
+    this.settings.RevisionCheckFlg = true;
   }
 
   /** にじさんじの公式サイト(Twitter垢)のページを開く */

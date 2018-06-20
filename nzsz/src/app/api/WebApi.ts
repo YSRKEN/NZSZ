@@ -33,4 +33,11 @@ export class WebApi {
             return liveInfo;
         });
     }
+    static async downloadRevision(): Promise<number>{
+        const result = await WebApi.http.get<{"revision": string}>
+            ("https://script.google.com/macros/s/AKfycbxMAXjAVnDg4phbeK1WvVc90QICkVszTjYVmQ5FHkmuZqRnGeI/exec")
+            .toPromise();
+        const revision = parseInt(result.revision);
+        return (isNaN(revision) ? 0 : revision);
+    }
 }
