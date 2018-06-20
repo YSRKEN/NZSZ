@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /NZSZ/option
+Disallow: /NZSZ/timer
+Sitemap: https://ysrken.github.io/NZSZ/sitemap.xml
