@@ -46,6 +46,7 @@ export class SettingsService {
     this.TimerLiveInfoList = this.TimerLiveInfoList.sort((a, b) => a.date.getTime() > b.date.getTime() ? 1 : -1);
     // データを記録
     this.writeTimerLiveInfoList();
+    console.log("タイマーの配信予定にデータを追加しました");
   }
 
   /** タイマーの配信予定を記録 */
@@ -59,6 +60,27 @@ export class SettingsService {
       this.TimerLiveInfoList.map(l => l.site).join('|'));
     window.localStorage.setItem("nzsz-TimerUrl",
       this.TimerLiveInfoList.map(l => l.url).join('|'));
+      console.log("タイマーの配信予定を記録しました");
+  }
+
+  /** 古いタイマー情報を削除する */
+  deleteOldTimer(){
+    if(this.TimerLiveInfoList.filter(li => li.date.getTime() < moment().toDate().getTime()).length > 0){
+      this.TimerLiveInfoList = this.TimerLiveInfoList.filter(li => li.date.getTime() >= moment().toDate().getTime());
+      this.writeTimerLiveInfoList();
+      console.log("古いタイマー情報を削除しました");
+    }
+  }
+
+  /** 指定したタイマー情報を削除する */
+  deleteSelectTimer(liveInfo: LiveInfo){
+    const hash2 = liveInfo.date.toString() + liveInfo.site + liveInfo.url + liveInfo.youtuber;
+    this.TimerLiveInfoList = this.TimerLiveInfoList.filter(li => {
+      const hash1 = li.date.toString() + li.site + li.url + li.youtuber;
+      return hash1 != hash2;
+    });
+    this.writeTimerLiveInfoList();
+    console.log("選択したタイマー情報を削除しました");
   }
 
   /** 起動時に今日の予定を読み込むフラグ */

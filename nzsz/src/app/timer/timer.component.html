@@ -1,18 +1,23 @@
 <h1 class="text-center my-3vh font-size-vh-5">タイマー画面</h1>
-<mat-list class="overflow-auto vh-70 my-1vh w-100"
+<mat-list class="overflow-auto vh-60 my-1vh w-100"
   *ngIf="LiveInfoList.length > 0">
   <mat-list-item *ngFor="let liveInfo of LiveInfoList">
     <mat-icon mat-list-icon>person</mat-icon>
     <div mat-line>
-      <span class="w-60 d-inline-block">{{liveInfo.site | limitStr: 12}}</span>
-      <span class="w-40 d-inline-block">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
+      <span class="w-60 d-inline-block" (click)="jumpOtherPage(liveInfo.url)">{{liveInfo.site | limitStr: 12}}</span>
+      <span class="w-40 d-inline-block" (click)="deleteSelectTimer(liveInfo)">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
     </div>
     <div mat-line>
-      <span class="w-60 d-inline-block">{{liveInfo.youtuber | limitStr: 12}}</span>
-      <span class="w-40 d-inline-block">{{liveInfo.date | date: 'HH:mm ～'}}</span>
+      <span class="w-60 d-inline-block" (click)="jumpOtherPage(liveInfo.url)">{{liveInfo.youtuber | limitStr: 12}}</span>
+      <span class="w-40 d-inline-block" (click)="deleteSelectTimer(liveInfo)">{{liveInfo.date | date: 'HH:mm ～'}}</span>
     </div>
   </mat-list-item>
 </mat-list>
+<div class="my-2vh text-center">
+  <button mat-raised-button color="primary" class="ml-2vw my-1vh min-width-0 vh-6 font-size-vh-2"
+  (click)="deleteOldTimer()">
+    古いタイマー情報を削除</button>
+</div>
 <div class="my-2vh text-center">
   <button mat-raised-button color="primary" class="ml-2vw my-1vh min-width-0 vh-6 font-size-vh-2"
   (click)="navigateMain()">
