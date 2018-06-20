@@ -18,6 +18,24 @@ export class TimerComponent implements OnInit {
     this.LiveInfoList = this.settings.TimerLiveInfoList;
   }
 
+  /** 任意のページを開く */
+  jumpOtherPage(url: string){
+    window.open(url);
+  }
+
+  /** 古いタイマー情報を削除 */
+  deleteOldTimer(){
+    this.settings.deleteOldTimer();
+    this.LiveInfoList = this.settings.TimerLiveInfoList;
+    window.alert("古いタイマー情報を削除しました。");
+  }
+
+  /** タップしたタイマー情報を削除 */
+  deleteSelectTimer(liveInfo: LiveInfo){
+    this.settings.deleteSelectTimer(liveInfo);
+    this.LiveInfoList = this.settings.TimerLiveInfoList;
+  }
+
   /** メイン画面に遷移 */
   navigateMain(){
     this.router.navigate(['/']);

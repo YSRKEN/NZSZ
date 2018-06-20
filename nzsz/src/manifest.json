@@ -4,8 +4,11 @@
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
+  "orientation": "portrait-primary",
+  "description": "にじさんじ用のポータルWebアプリ",
+  "lang": "ja-jp",
   "scope": "/",
-  "start_url": "/NZSZ/",
+  "start_url": ".",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
