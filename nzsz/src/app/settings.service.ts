@@ -9,6 +9,8 @@ export class SettingsService {
 
   /** タイマーの配信予定 */
   TimerLiveInfoList: LiveInfo[] = [];
+  /** 起動時にリビジョンをチェックしたか？  */
+  RevisionCheckFlg: boolean = false;
 
   constructor() {
     // タイマーの配信予定を読み込む
