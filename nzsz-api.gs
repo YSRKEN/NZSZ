@@ -4,11 +4,7 @@ function doGet(e) {
   var month = parseInt(e.parameter.month);
   var day = parseInt(e.parameter.day);
   var json = JSON.stringify(downloadLiveInfoList(year, month, day));
-  ContentService.createTextOutput();
-  var output = ContentService.createTextOutput();
-  output.setMimeType(ContentService.MimeType.JSON);
-  output.setContent(json);
-  return output;
+  return ContentService.createTextOutput(json).setMimeType(ContentService.MimeType.JAVASCRIPT);
 }
 
 // leftStringとrightStringに挟まれた部分を切り取る
