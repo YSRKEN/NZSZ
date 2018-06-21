@@ -20,16 +20,5 @@
         "/assets/**"
       ]
     }
-  }],
-  "dataGroups":[{
-    "name": "apis",
-    "urls": [
-      "https://script.google.com/macros/s/*/exec"
-    ],
-    "cacheConfig": {
-      "maxSize": 10,
-      "maxAge": "1d",
-      "strategy": "freshness"
-    }
   }]
 }
