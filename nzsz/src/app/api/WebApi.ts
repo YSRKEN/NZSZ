@@ -5,6 +5,9 @@ import { HttpClient } from "@angular/common/http";
 export class WebApi {
     /** HTTPクライアント */
     private static http: HttpClient;
+    /* エンドポイント */
+    private static endpoint: string = "http://localhost:8080";
+
     /** 初期化子 */
     static initialize(http: HttpClient){
         WebApi.http = http;
@@ -17,12 +20,8 @@ export class WebApi {
             date: string,
             site: string,
             url: string
-        }]>("https://script.google.com/macros/s/AKfycbwdfMKMm6-Q30vCMz-1hv-xETgrpJYS0Ca1ZeJI7S7KSwu4kDXS/exec",
-        {params: {
-            year: "" + date.getFullYear(),
-            month: "" + (date.getMonth() + 1),
-            day: "" + date.getDate()
-        }}).toPromise();
+        }]>(`${this.endpoint}/api/liveinfo/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`)
+        .toPromise();
         return result.map((data) => {
             const liveInfo: LiveInfo = {
                 youtuber: data.youtuber,
