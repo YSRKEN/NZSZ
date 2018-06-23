@@ -105,7 +105,7 @@ export class MainComponent implements OnInit {
    * @param liveInfo 追加したい配信予定
    */
   setTimer(liveInfo: LiveInfo){
-    this.settings.addTimerLiveInfoList(liveInfo);
+    this.settings.addTimer(liveInfo);
     window.alert('通知タイマーを設定しました。');
   }
   /**
