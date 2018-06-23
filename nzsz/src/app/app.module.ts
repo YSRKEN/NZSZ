@@ -10,11 +10,12 @@ import { MatButtonModule, MatIconModule, MatListModule, MatProgressSpinnerModule
 import { MainComponent } from './main/main.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LimitStrPipe } from './limit-str.pipe';
+import { LimitStrPipe } from './pipe/limit-str.pipe';
 import { OptionComponent } from './option/option.component';
-import { SettingsService } from './settings.service';
+import { SettingsService } from './service/settings.service';
 import { FormsModule } from '@angular/forms';
 import { TimerComponent } from './timer/timer.component';
+import { WebApiService } from './service/webapi.service';
 
 const appRoutes: Routes = [ // 追加
   { path: '', component: MainComponent },
@@ -45,7 +46,7 @@ const appRoutes: Routes = [ // 追加
     MatProgressSpinnerModule,
     FormsModule
   ],
-  providers: [SettingsService],
+  providers: [SettingsService, WebApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

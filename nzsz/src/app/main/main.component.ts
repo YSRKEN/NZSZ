@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WebApi } from '../api/WebApi';
-import { LiveInfo } from '../api/LiveInfo';
+import { WebApiService } from '../service/webapi.service';
+import { LiveInfo } from '../model/LiveInfo';
 import { Router } from '@angular/router';
-import { SettingsService } from '../settings.service';
+import { SettingsService } from '../service/settings.service';
 
 @Component({
   selector: 'app-main',
@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
     try{
       this.ProgressSpinnerFlg = true;
       // 配信データをダウンロードする
-      this.LiveInfoList = await WebApi.downloadLiveInfoList(date);
+      this.LiveInfoList = await this.webApi.downloadLiveInfoList(date);
     }catch(e){
       this.LiveInfoList = [];
       window.alert('ライブ情報を取得できませんでした。');
@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
     this.Today = date;
   }
 
-  constructor(private router: Router, private settings: SettingsService) { }
+  constructor(private router: Router, private settings: SettingsService, private webApi: WebApiService) { }
 
   async ngOnInit() {
     // 自動読み込みの設定
@@ -46,7 +46,7 @@ export class MainComponent implements OnInit {
       await this.refreshLiveInfoList(this.Today);
     }
     // バージョンチェック
-    const latestRevision = await WebApi.downloadRevision();
+    const latestRevision = await this.webApi.downloadRevision();
     if(latestRevision > this.revision){
       if(!this.settings.RevisionCheckFlg){
         window.alert("アプリが最新版ではありません。\nChromeのキャッシュをクリアしてから\n再度起動し直してください。");

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LiveInfo } from './api/LiveInfo';
+import { LiveInfo } from '../model/LiveInfo';
 import * as moment from 'moment';
 
 @Injectable({

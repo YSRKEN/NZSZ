@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SettingsService } from '../settings.service';
+import { SettingsService } from '../service/settings.service';
 
 @Component({
   selector: 'app-option',
