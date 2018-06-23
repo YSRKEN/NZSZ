@@ -28,11 +28,12 @@ public class DownloadDataController {
         final var jst = ZoneId.of("JST", ZoneId.SHORT_IDS);
         // スタブ
         if(year == 2018 && month == 6 && day == 17){
-            final var liveInfo = new LiveInfo();
-            liveInfo.setYoutuber("月ノ美兎");
-            liveInfo.setDate(Date.from(LocalDateTime.of(2018, 6, 17, 15, 0).atZone(jst).toInstant()));
-            liveInfo.setSite("OPENREC.tv");
-            liveInfo.setUrl("https://twitter.com/MitoTsukino/status/1008200445297188864");
+            final var liveInfo = new LiveInfo(){{
+                setYoutuber("月ノ美兎");
+                setDate(Date.from(LocalDateTime.of(2018, 6, 17, 15, 0).atZone(jst).toInstant()));
+                setSite("OPENREC.tv");
+                setUrl("https://twitter.com/MitoTsukino/status/1008200445297188864");
+            }};
             return new LiveInfo[]{liveInfo};
         }else{
             return new LiveInfo[]{};
