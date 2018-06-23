@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,7 +31,7 @@ public class DownloadDataController {
         if(year == 2018 && month == 6 && day == 17){
             final var liveInfo = new LiveInfo(){{
                 setYoutuber("月ノ美兎");
-                setDate(Date.from(LocalDateTime.of(2018, 6, 17, 15, 0).atZone(jst).toInstant()));
+                setDate(ZonedDateTime.of(2018, 6, 17, 15, 0, 0, 0, jst).toOffsetDateTime().toString());
                 setSite("OPENREC.tv");
                 setUrl("https://twitter.com/MitoTsukino/status/1008200445297188864");
             }};

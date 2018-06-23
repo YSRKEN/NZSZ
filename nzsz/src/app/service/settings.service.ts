@@ -8,7 +8,7 @@ import * as moment from 'moment';
 export class SettingsService {
 
   /** 設定情報 */
-  settings: SettingData = new SettingData();
+  private settings: SettingData = new SettingData();
 
   /** 設定を保存 */
   private writeSettings(){
@@ -20,6 +20,10 @@ export class SettingsService {
     // 設定を読み込む
     if(window.localStorage.getItem("settings") != null){
       this.settings = JSON.parse(window.localStorage.getItem("settings"));
+      this.settings.timerList = this.settings.timerList.map(li => {
+        li.date = new Date(li.date);
+        return li;
+      });
       this.settings.revisionCheckFlg = false;
       console.log("設定を読み込みました");
     }else{
@@ -31,10 +35,9 @@ export class SettingsService {
   /** タイマーの配信予定にデータを追加する */
   addTimer(liveInfo: LiveInfo){
     // データを追加
-    const hash2 = liveInfo.date.toString() + liveInfo.site + liveInfo.url + liveInfo.youtuber;
+    const hash2 = calcHash(liveInfo);
     if(this.settings.timerList.filter(li => {
-      const hash1 = li.date.toString() + li.site + li.url + li.youtuber;
-      return hash1 == hash2;
+      return calcHash(li) == hash2;
     }).length == 0){
       this.settings.timerList.push(liveInfo);
     }
@@ -58,8 +61,7 @@ export class SettingsService {
   deleteSelectTimer(liveInfo: LiveInfo){
     const hash2 = liveInfo.date.toString() + liveInfo.site + liveInfo.url + liveInfo.youtuber;
     this.settings.timerList = this.settings.timerList.filter(li => {
-      const hash1 = li.date.toString() + li.site + li.url + li.youtuber;
-      return hash1 != hash2;
+      return calcHash(li) != hash2;
     });
     console.log("タイマーの配信予定から選択した情報を削除しました");
     this.writeSettings();
@@ -81,6 +83,10 @@ export class SettingsService {
     this.settings.revisionCheckFlg = flg;
     this.writeSettings();
   }
+  /** 配信予定の一覧を返す */
+  get TimerList(): LiveInfo[]{
+    return this.settings.timerList;
+  }
 }
 
 /**
@@ -93,4 +99,9 @@ class SettingData{
   revisionCheckFlg: boolean = false;
   /** カレンダーの日付をタップした際に自動読込みするか？ */
   autoLoadFlg: boolean = false;
+}
+
+/** 配信情報のハッシュ値 */
+function calcHash(liveInfo: LiveInfo): string{
+  return liveInfo.date.toString() + liveInfo.site + liveInfo.url + liveInfo.youtuber;
 }

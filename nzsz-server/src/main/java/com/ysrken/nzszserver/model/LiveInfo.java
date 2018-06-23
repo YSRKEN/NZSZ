@@ -12,7 +12,7 @@ public class LiveInfo {
     /** 配信者名 */
     String youtuber;
     /** 配信日時 */
-    Date date;
+    String date;
     /** 配信サイト */
     String site;
     /** 配信URL */

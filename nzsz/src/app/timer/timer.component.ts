@@ -21,7 +21,7 @@ export class TimerComponent implements OnInit {
   constructor(private router: Router, private settings: SettingsService) {}
 
   ngOnInit() {
-    this.LiveInfoList = this.settings.settings.timerList;
+    this.LiveInfoList = this.settings.TimerList;
   }
 
   /**
@@ -37,7 +37,7 @@ export class TimerComponent implements OnInit {
   */
   deleteOldTimer(){
     this.settings.deleteOldTimer();
-    this.LiveInfoList = this.settings.settings.timerList;
+    this.LiveInfoList = this.settings.TimerList;
     window.alert("古いタイマー情報を削除しました。");
   }
 
@@ -47,7 +47,7 @@ export class TimerComponent implements OnInit {
   */
   deleteSelectTimer(liveInfo: LiveInfo){
     this.settings.deleteSelectTimer(liveInfo);
-    this.LiveInfoList = this.settings.settings.timerList;
+    this.LiveInfoList = this.settings.TimerList;
   }
 
   /**
