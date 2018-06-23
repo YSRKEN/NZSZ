@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatIconModule, MatListModule, MatProgressSpinnerModule, MatCheckboxModule } from '@angular/material';
 import { MainComponent } from './main/main.component';
@@ -16,12 +15,6 @@ import { SettingsService } from './service/settings.service';
 import { FormsModule } from '@angular/forms';
 import { TimerComponent } from './timer/timer.component';
 import { WebApiService } from './service/webapi.service';
-
-const appRoutes: Routes = [ // 追加
-  { path: '', component: MainComponent },
-  { path: 'option', component: OptionComponent },
-  { path: 'timer', component: TimerComponent }
-];
 
 @NgModule({
   declarations: [
@@ -37,7 +30,6 @@ const appRoutes: Routes = [ // 追加
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
