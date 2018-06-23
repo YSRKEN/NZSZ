@@ -1,4 +1,6 @@
-/** VYoutuberによる配信情報 */
+/**
+ * VYoutuberによる配信情報
+*/
 export class LiveInfo {
     /** 配信者名 */
     youtuber: string;

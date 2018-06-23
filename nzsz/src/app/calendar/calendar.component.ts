@@ -1,20 +1,23 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 
+/**
+ * 指定した日付におけるカレンダー表示を行う埋め込み用Component
+ */
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
-  /* カレンダー情報 */
+  /** カレンダー情報 */
   CalendarTable: DayInfo[][] = [];
-  /* 今月を表す文字列 */
+  /** 今月を表す文字列 */
   ThisMonthString: string = "";
 
-  /* CalendarTableの縦の大きさ */
+  /** CalendarTableの縦の大きさ */
   private static readonly height: number = 5;
-  /* CalendarTableの横の大きさ */
+  /** CalendarTableの横の大きさ */
   private static readonly width: number = 7;
   /** 今日の日付 */
   private today: moment.Moment = moment();
@@ -32,7 +35,10 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {}
 
-  // 日付をセットする
+  /**
+   * 日付をセットする
+   * @param date セットする日付
+   */
   @Input()
   set date(date: string) {
     // 今日の月情報をセットする
@@ -51,46 +57,63 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  // タップされた日付を親に受け渡す
   @Output() onTap = new EventEmitter<Date>();
+  /**
+   * タップされた日付を親に受け渡す
+   * @param date 日付情報
+   */
   tap(date: Date){
     this.onTap.emit(date);
   }
 
-  // 1年戻す
+  /**
+   * 1年戻す
+   */
   backOneYear(){
     let date = this.today.clone();
     this.onTap.emit(date.add(-1, "year").toDate());
   }
-  // 1ヶ月戻す
+  /**
+   * 1ヶ月戻す
+   */
   backOneMonth(){
     let date = this.today.clone();
     this.onTap.emit(date.add(-1, "month").toDate());
   }
-  // 1ヶ月進める
+  /**
+   * 1ヶ月進める
+   */
   forwardOneMonth(){
     let date = this.today.clone();
     this.onTap.emit(date.add(1, "month").toDate());
   }
-  // 1年進める
+  /**
+   * 1年進める
+   */
   forwardOneYear(){
     let date = this.today.clone();
     this.onTap.emit(date.add(1, "year").toDate());
   }
 }
 
+/**
+ * カレンダーで表示する情報を表すクラス
+ */
 class DayInfo{
-  // 正確な日付
+  /** 正確な日付 */
   date: Date;
-  // 「今日」を表すか？
+  /** 「今日」を表すか？ */
   todayFlg: boolean = false;
-  // 「今月」の日付か？
+  /** 「今月」の日付か？ */
   thisMonthFlg: boolean = true;
-  // 日付の数字
+  /** 日付の数字 */
   get value(): number{
     return this.date.getDate();
   }
-  // 2つのフラグを、別の日付との比較から判定
+  /**
+   * 2つのフラグを、別の日付との比較から判定
+   * @param date 入力する日付
+   */
   setFlgs(date: Date): void{
     this.todayFlg = (moment(date).format("YYYY-MM-DD") == moment(this.date).format("YYYY-MM-DD"));
     this.thisMonthFlg = (date.getMonth() == this.date.getMonth());

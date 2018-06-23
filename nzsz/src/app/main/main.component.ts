@@ -4,6 +4,9 @@ import { LiveInfo } from '../model/LiveInfo';
 import { Router } from '@angular/router';
 import { SettingsService } from '../service/settings.service';
 
+/**
+ * メイン画面を表すComponent
+ */
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -20,10 +23,14 @@ export class MainComponent implements OnInit {
   LastUpdate: string = "2018/06/20";
   /** くるくる表示をするか？ */
   ProgressSpinnerFlg: boolean = false;
-  /** リビジョン */
-  readonly revision: number = 8;
 
-  /** 配信予定を更新する */
+  /** リビジョン */
+  private readonly revision: number = 8;
+
+  /**
+   * 配信予定を更新する
+   * @param date 日付
+   */
   private async refreshLiveInfoList(date: Date){
     try{
       this.ProgressSpinnerFlg = true;
@@ -55,37 +62,55 @@ export class MainComponent implements OnInit {
     this.settings.RevisionCheckFlg = true;
   }
 
-  /** にじさんじの公式サイト(Twitter垢)のページを開く */
+  /**
+   * にじさんじの公式サイト(Twitter垢)のページを開く
+  */
   jumpNzSzSite(){
     window.open('https://twitter.com/nijisanji_app');
   }
-  /** にじさんじの公式チャンネル(Youtube)のページを開く */
+  /**
+   * にじさんじの公式チャンネル(Youtube)のページを開く
+  */
   jumpNzSzLive(){
     window.open('https://www.youtube.com/channel/UCX7YkU9nEeaoZbkVLVajcMg/videos');
   }
-  /** 任意のページを開く */
+  /**
+   * 指定したURLを開く
+   * @param url URL
+   */
   jumpOtherPage(url: string){
     window.open(url);
   }
-  /** タイマー画面に遷移 */
+  /**
+   * タイマー画面に遷移
+  */
   navigateTimer(){
     this.router.navigate(['/timer']);
   }
-  /** オプション画面に遷移 */
+  /**
+   * オプション画面に遷移
+  */
   navigateOption(){
     this.router.navigate(['/option']);
   }
-  /** タップした日付にカレンダーの日付を変更する */
+  /**
+   * タップした日付にカレンダーの日付を変更する
+   * @param date タップした日付
+   */
   async onTap(date: Date){
     await this.refreshLiveInfoList(date);
   }
-  /** 通知タイマーを設定する */
+  /**
+   * 通知タイマーを設定する
+   * @param liveInfo 追加したい配信予定
+   */
   setTimer(liveInfo: LiveInfo){
     this.settings.addTimerLiveInfoList(liveInfo);
     window.alert('通知タイマーを設定しました。');
   }
-
-  /** バージョン情報を表示する */
+  /**
+   * バージョン情報を表示する
+  */
   showVersionInfo(){
     window.alert("にじさんじ配信アプリ「NZSZ」\nバージョン：" + this.Version + "\n最終更新日：" + this.LastUpdate);
   }
