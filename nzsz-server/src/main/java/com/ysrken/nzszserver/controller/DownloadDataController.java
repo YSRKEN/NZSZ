@@ -48,18 +48,18 @@ public class DownloadDataController {
                 final var liveInfo = new LiveInfo();
                 // 配信時刻を抽出する
                 {
-                    //■の手前が時刻表示部分のはず
+                    // ■の手前が時刻表示部分のはず
                     final var temp1 = liveInfoElement.text();
                     if(!temp1.contains("■")){
                         continue;
                     }
-                    //<del>された文字列は不要なので削除
+                    // <del>された文字列は不要なので削除
                     var temp2 = temp1.substring(0, temp1.indexOf("■"));
                     for(final var delElement : liveInfoElement.getElementsByTag("del")){
                         final var delSting = delElement.text();
                         temp2 = temp2.replace(delSting, "");
                     }
-                    //正規表現でマッチした数字部分を取り出し、時刻データに変換する
+                    // 正規表現でマッチした数字部分を取り出し、時刻データに変換する
                     final var regex = "(\\d{2})時(\\d{2})分～";
                     final var pattern = Pattern.compile(regex);
                     final var matcher = pattern.matcher(temp2);
@@ -74,12 +74,30 @@ public class DownloadDataController {
                 }
                 // Youtuber名とURLを抽出する
                 {
+                    // 最初のaタグを取り出す
                     final var aElementFirst = liveInfoElement.selectFirst("a.ext");
                     if(aElementFirst == null){
                         continue;
                     }
+                    // そこからYoutuber名とURLを抽出する
                     liveInfo.setYoutuber(aElementFirst.text());
                     liveInfo.setUrl(aElementFirst.attr("href").replace("http://re.wikiwiki.jp/?", ""));
+                }
+                // サイト名を抽出する
+                {
+                    // 全体のテキストを取り出す
+                    var temp1 = liveInfoElement.text();
+                    // ul以下の内容は除去する
+                    final var temp2 = liveInfoElement.selectFirst("ul.list2");
+                    if(temp2 != null){
+                        temp1 = temp1.replace(temp2.text(), "");
+                    }
+                    // 「at:」以降の「連続する」文字列を取り出し、サイト名とする。ただし、カンマ区切り対策は施す
+                    var temp3 = temp1.substring(temp1.indexOf("at:") + 3).replace(", ","," );
+                    if(temp3.contains(" ")){
+                        temp3 = temp3.substring(0, temp3.indexOf(" "));
+                    }
+                    liveInfo.setSite(temp3);
                 }
                 //リストに追加する
                 output.add(liveInfo);
