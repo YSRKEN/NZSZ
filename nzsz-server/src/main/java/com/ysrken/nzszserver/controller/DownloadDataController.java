@@ -72,6 +72,15 @@ public class DownloadDataController {
                     final ZoneId jst = ZoneId.of("JST", ZoneId.SHORT_IDS);
                     liveInfo.setDate(ZonedDateTime.of(year, month, day, hour, minute, 0, 0, jst).toOffsetDateTime().toString());
                 }
+                // Youtuber名とURLを抽出する
+                {
+                    final var aElementFirst = liveInfoElement.selectFirst("a.ext");
+                    if(aElementFirst == null){
+                        continue;
+                    }
+                    liveInfo.setYoutuber(aElementFirst.text());
+                    liveInfo.setUrl(aElementFirst.attr("href").replace("http://re.wikiwiki.jp/?", ""));
+                }
                 //リストに追加する
                 output.add(liveInfo);
             }
