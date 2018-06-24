@@ -105,6 +105,10 @@ export class MainComponent implements OnInit {
    * @param liveInfo 追加したい配信予定
    */
   setTimer(liveInfo: LiveInfo){
+    // 現在時刻より古い通知タイマーに意味はないので無視する
+    if(liveInfo.date.getTime() < (new Date()).getTime()){
+      return;
+    }
     this.settings.addTimer(liveInfo);
     window.alert('通知タイマーを設定しました。');
   }
