@@ -67,10 +67,20 @@ public class DownloadDataController {
                         continue;
                     }
                     // 時刻部分を取り出す
-                    final var hour = Integer.parseInt(matcher.group(1));
-                    final var minute = Integer.parseInt(matcher.group(2));
-                    final ZoneId jst = ZoneId.of("JST", ZoneId.SHORT_IDS);
-                    liveInfo.setDate(ZonedDateTime.of(year, month, day, hour, minute, 0, 0, jst).toOffsetDateTime().toString());
+                    // 24時を超えることもあるので補正を掛けている
+                    var liveDay = 0;
+                    var liveHour = Integer.parseInt(matcher.group(1));
+                    if(liveHour >= 24){
+                        liveDay = liveHour / 24;
+                        liveHour = liveHour % 24;
+                    }
+                    final var liveMinute = Integer.parseInt(matcher.group(2));
+                    final var jst = ZoneId.of("JST", ZoneId.SHORT_IDS);
+                    var liveDate = ZonedDateTime.of(year, month, day, liveHour, liveMinute, 0, 0, jst).toOffsetDateTime();
+                    if(liveDay > 0){
+                        liveDate = liveDate.plusDays(liveDay);
+                    }
+                    liveInfo.setDate(liveDate.toString());
                 }
                 // Youtuber名とURLを抽出する
                 {
