@@ -9,7 +9,6 @@ import { MatButtonModule, MatIconModule, MatListModule, MatProgressSpinnerModule
 import { MainComponent } from './main/main.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LimitStrPipe } from './pipe/limit-str.pipe';
 import { OptionComponent } from './option/option.component';
 import { SettingsService } from './service/settings.service';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +20,6 @@ import { WebApiService } from './service/webapi.service';
     AppComponent,
     MainComponent,
     CalendarComponent,
-    LimitStrPipe,
     OptionComponent,
     TimerComponent,
   ],

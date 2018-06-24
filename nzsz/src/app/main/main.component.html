@@ -8,12 +8,12 @@
     <div class="w-20" (click)="setTimer(liveInfo)">
       {{liveInfo.date | date: 'HH:mm'}}
     </div>
-    <div>
-      <div (click)="jumpOtherPage(liveInfo.url)">
+    <div class="w-80">
+      <div class="text-overflow w-100" (click)="jumpOtherPage(liveInfo.url)">
         {{liveInfo.site}}
       </div>
-      <div (click)="jumpOtherPage(liveInfo.url)">
-        {{liveInfo.youtuber | limitStr: 16}}
+      <div class="text-overflow w-100" (click)="jumpOtherPage(liveInfo.url)">
+        {{liveInfo.youtuber}}
       </div>
     </div>
   </mat-list-item>

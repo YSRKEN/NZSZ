@@ -4,11 +4,11 @@
   <mat-list-item *ngFor="let liveInfo of LiveInfoList">
     <mat-icon mat-list-icon>person</mat-icon>
     <div mat-line>
-      <span class="w-60 d-inline-block" (click)="jumpOtherPage(liveInfo.url)">{{liveInfo.site | limitStr: 12}}</span>
+      <span class="w-60 d-inline-block text-overflow" (click)="jumpOtherPage(liveInfo.url)">{{liveInfo.site}}</span>
       <span class="w-40 d-inline-block" (click)="deleteSelectTimer(liveInfo)">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
     </div>
     <div mat-line>
-      <span class="w-60 d-inline-block" (click)="jumpOtherPage(liveInfo.url)">{{liveInfo.youtuber | limitStr: 12}}</span>
+      <span class="w-60 d-inline-block text-overflow" (click)="jumpOtherPage(liveInfo.url)">{{liveInfo.youtuber}}</span>
       <span class="w-40 d-inline-block" (click)="deleteSelectTimer(liveInfo)">{{liveInfo.date | date: 'HH:mm ～'}}</span>
     </div>
   </mat-list-item>
