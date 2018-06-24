@@ -2,6 +2,7 @@ package com.ysrken.nzszserver.model;
 
 import lombok.Data;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 /**
@@ -10,11 +11,11 @@ import java.util.Date;
 @Data
 public class LiveInfo {
     /** 配信者名 */
-    String youtuber;
+    String youtuber = "？";
     /** 配信日時 */
-    String date;
+    String date = ZonedDateTime.now().toString();
     /** 配信サイト */
-    String site;
+    String site = "？";
     /** 配信URL */
-    String url;
+    String url = "";
 }
