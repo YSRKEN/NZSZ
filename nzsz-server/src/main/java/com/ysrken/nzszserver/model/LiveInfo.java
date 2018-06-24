@@ -1,9 +1,8 @@
 package com.ysrken.nzszserver.model;
 
-import lombok.Data;
-
 import java.time.ZonedDateTime;
-import java.util.Date;
+
+import lombok.Data;
 
 /**
  * 配信予定を表すModel

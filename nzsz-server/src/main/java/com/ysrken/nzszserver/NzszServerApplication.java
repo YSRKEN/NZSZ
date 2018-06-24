@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class NzszServerApplication {
 	/**
-	 * maineメソッド
+	 * mainメソッド
 	 * @param args コマンドライン引数
 	 */
 	public static void main(String[] args) {

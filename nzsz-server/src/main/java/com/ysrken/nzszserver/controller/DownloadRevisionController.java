@@ -1,13 +1,11 @@
 package com.ysrken.nzszserver.controller;
 
-import com.ysrken.nzszserver.model.LiveInfo;
-import lombok.Data;
-import lombok.var;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+import lombok.Data;
 
 /**
  * 最新版のリビジョン番号を返すController
