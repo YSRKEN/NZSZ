@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { LiveInfo } from '../model/LiveInfo';
 
 /**
@@ -19,24 +19,28 @@ export class WebApiService {
      * @returns 指定した日付のライブ情報
      */
     async downloadLiveInfoList(date: Date): Promise<LiveInfo[]> {
-        // サーバーに情報をリクエストする
-        const result = await this.http.get<[{
-            youtuber: string,
-            date: string,
-            site: string,
-            url: string
-        }]>(`${this.endpoint}/api/liveinfo/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`)
-            .toPromise();
-        return result.map((data) => {
-            // 返ってきた結果を代入する
-            const liveInfo: LiveInfo = {
-                youtuber: data.youtuber,
-                date: new Date(data.date),
-                site: data.site,
-                url: data.url
-            };
-            return liveInfo;
-        });
+        try{
+            // サーバーに情報をリクエストする
+            const result = await this.http.get<LiveInfoJson[]>(`${this.endpoint}/api/liveinfo/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`)
+                .toPromise();
+            return result.map((data) => {
+                // 返ってきた結果を代入する
+                const liveInfo: LiveInfo = {
+                    youtuber: data.youtuber,
+                    date: new Date(data.date),
+                    site: data.site,
+                    url: data.url
+                };
+                return liveInfo;
+            });
+        }catch(e){
+            const status = (e as HttpErrorResponse).status;
+            if(status < 500){
+                return [];
+            }else{
+                throw e;
+            }
+        }
     }
     /**
      * リビジョン情報を取得する
@@ -54,4 +58,11 @@ export class WebApiService {
             return revision;
         }
     }
+}
+
+interface LiveInfoJson{
+    youtuber: string;
+    date: string;
+    site: string;
+    url: string;
 }
