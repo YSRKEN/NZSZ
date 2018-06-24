@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LiveInfo } from '../model/LiveInfo';
 import * as moment from 'moment';
+import * as push from 'push.js';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,8 @@ export class SettingsService {
       console.log("デフォルト設定で起動しました");
       this.writeSettings();
     }
+    // 配信予定を通知するためのタイマー動作
+    window.setInterval(this.checkTimer.bind(this), 10 * 1000);
   }
 
   /** タイマーの配信予定にデータを追加する */
@@ -86,6 +89,24 @@ export class SettingsService {
   /** 配信予定の一覧を返す */
   get TimerList(): LiveInfo[]{
     return this.settings.timerList;
+  }
+  /**
+   * 配信予定を開始10分前に通知する
+   * (10秒間隔でチェックするため、配信予定時刻－現在時刻が600[s]～591[s]なら通知するようにしている)
+   */
+  checkTimer(){
+    console.log('配信予定タイマーの確認...');
+    const nowTime = (new Date()).getTime();
+    const timerList = this.settings.timerList;
+    for(const liveInfo of timerList){
+      const timeDiff = liveInfo.date.getTime() - nowTime;
+      //console.log(`配信予定:\n${liveInfo.date.getHours()}:${liveInfo.date.getMinutes()}　${liveInfo.site}\n${liveInfo.youtuber}\n${timeDiff / 1000}[s]`)
+      if(timeDiff >= 591 * 1000 && nowTime <= 600 * 1000){
+        if(push.Permission.has()){
+          push.create(`${liveInfo.date.getHours()}:${liveInfo.date.getMinutes()}配信予定:\n${liveInfo.site}\n${liveInfo.youtuber}`);
+        }
+      }
+    }
   }
 }
 
