@@ -109,6 +109,9 @@ public class DownloadDataController {
                     }
                     // 「at:」以降の「連続する」文字列を取り出し、サイト名とする。ただし、カンマ区切り対策は施す
                     temp1 = temp1.replaceAll("at: +", "at:");
+                    if(!temp1.contains("at:")){
+                        continue;
+                    }
                     var temp3 = temp1.substring(temp1.indexOf("at:") + 3).replace(", ","," );
                     if(temp3.contains(" ")){
                         temp3 = temp3.substring(0, temp3.indexOf(" "));
