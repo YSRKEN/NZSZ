@@ -11,9 +11,11 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ysrken.nzszserver.controller.DownloadDataController;
+
 /**
  * This mock class is created to enable basic unit testing of the
- * {@link HelloAppEngine} class. Only methods used in the unit test
+ * {@link DownloadDataController} class. Only methods used in the unit test
  * have a non-trivial implementation.
  * 
  * Feel free to change this class or replace it using other ways for testing
