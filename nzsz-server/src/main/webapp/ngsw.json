@@ -9,7 +9,7 @@
       "urls": [
         "./favicon.ico",
         "./index.html",
-        "./main.3cfc5eabe1ddff487cba.js",
+        "./main.f58e9ca1500872dc75df.js",
         "./polyfills.2f4a59095805af02bd79.js",
         "./runtime.a66f828dca56eeb90e02.js",
         "./styles.81bc1968fc10af946f0b.css"
@@ -44,8 +44,8 @@
     "./assets/icons/icon-72x72.png": "6842f7466d97ebf6c7a03239d59c8860028dbda0",
     "./assets/icons/icon-96x96.png": "517b1c36c2bca32df6037671ce4812e690debf46",
     "./favicon.ico": "650c7c1fc4a8bfc8ee7712aa299186f2cb275d23",
-    "./index.html": "fb5ce482bcc895945811046f51ca501a1ac4fce8",
-    "./main.3cfc5eabe1ddff487cba.js": "7add15c89882a0cf6416b1e68b1f75d99f394fb3",
+    "./index.html": "0898bc8f29cbf8d118f06915a8efff525a98d26b",
+    "./main.f58e9ca1500872dc75df.js": "8f8a1e29752865386548092d2bec3709da3d4e9c",
     "./polyfills.2f4a59095805af02bd79.js": "8949bb1b1e302dda246f6ed9c2da703270360b1f",
     "./runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
     "./styles.81bc1968fc10af946f0b.css": "75ed9471f31bfcebf0a39d19f06c3375d64cab6d"

@@ -27,7 +27,7 @@ import { WebApiService } from './service/webapi.service';
     HttpClientModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,

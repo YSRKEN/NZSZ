@@ -10,7 +10,7 @@ import { LiveInfo } from '../model/LiveInfo';
 })
 export class WebApiService {
     /* エンドポイント */
-    private readonly endpoint: string = "http://localhost:8080";
+    private readonly endpoint: string = window.location.origin;
 
     constructor(private http: HttpClient) { }
     /**
@@ -21,7 +21,7 @@ export class WebApiService {
     async downloadLiveInfoList(date: Date): Promise<LiveInfo[]> {
         try{
             // サーバーに情報をリクエストする
-            const result = await this.http.get<LiveInfoJson[]>(`${this.endpoint}/api/liveinfo/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`)
+            const result = await this.http.get<LiveInfoJson[]>(`${this.endpoint}/api/liveinfo?year=${date.getFullYear()}&month=${date.getMonth() + 1}&day=${date.getDate()}`)
                 .toPromise();
             return result.map((data) => {
                 // 返ってきた結果を代入する
