@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 
 /**
@@ -13,7 +14,7 @@ import com.google.appengine.repackaged.com.google.gson.Gson;
  * @author ysrken
  */
 public class Res {
-	static Gson gson = new Gson();
+	static ObjectMapper mapper = new ObjectMapper();
 
 	/**
 	 * 引数をjson化して、その結果をレスポンスボディに返す
@@ -28,6 +29,6 @@ public class Res {
 	public static void json(HttpServletResponse res, Object toJson) throws IOException {
 		res.setContentType("application/json");
 		res.setCharacterEncoding("utf-8");
-		res.getWriter().println(gson.toJson(toJson));
+		res.getWriter().println(mapper.writeValueAsString(toJson));
 	}
 }
