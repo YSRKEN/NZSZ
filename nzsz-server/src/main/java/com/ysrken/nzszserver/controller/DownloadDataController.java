@@ -45,17 +45,17 @@ public class DownloadDataController extends HttpServlet {
 			final var day = Integer.parseInt(dayString);
 
 			// 結果を返却する(スタブ)
-	        if(year == 2018 && month == 6 && day == 17){
-	        	final var jst = ZoneId.of("JST", ZoneId.SHORT_IDS);
-	            final var liveInfo = new LiveInfo();
-	            liveInfo.setYoutuber("月ノ美兎");
-	            liveInfo.setDate(ZonedDateTime.of(2018, 6, 17, 15, 0, 0, 0, jst).toOffsetDateTime().toString());
-	            liveInfo.setSite("OPENREC.tv");
-	            liveInfo.setUrl("https://twitter.com/MitoTsukino/status/1008200445297188864");
-	            Res.json(response, new LiveInfo[]{liveInfo});
-	        }else{
-	        	Res.json(response, new LiveInfo[]{});
-	        }
+			if (year == 2018 && month == 6 && day == 17) {
+				final var jst = ZoneId.of("JST", ZoneId.SHORT_IDS);
+				final var liveInfo = new LiveInfo();
+				liveInfo.setYoutuber("月ノ美兎");
+				liveInfo.setDate(ZonedDateTime.of(2018, 6, 17, 15, 0, 0, 0, jst).toOffsetDateTime().toString());
+				liveInfo.setSite("OPENREC.tv");
+				liveInfo.setUrl("https://twitter.com/MitoTsukino/status/1008200445297188864");
+				Res.json(response, new LiveInfo[] { liveInfo });
+			} else {
+				Res.json(response, new LiveInfo[] {});
+			}
 		} catch (NumberFormatException e) {
 			// 引数ミスの場合の処理
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

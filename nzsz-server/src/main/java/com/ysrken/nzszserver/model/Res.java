@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 
 /**
- * HTTPレスポンスを構成する
- * 参考：
+ * HTTPレスポンスを構成する 参考：
  * https://web-dev.hatenablog.com/entry/java/servlet/dev-restful-app/java2
  * 
  * @author ysrken
