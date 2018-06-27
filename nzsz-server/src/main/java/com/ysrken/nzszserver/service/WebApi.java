@@ -1,8 +1,6 @@
 package com.ysrken.nzszserver.service;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -13,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jsoup.Jsoup;
 
-import com.ysrken.nzszserver.model.LiveInfoCache;
+import com.ysrken.nzszserver.model.LiveInfo;
 
 import lombok.var;
 
 public class WebApi {
-    public static List<LiveInfoCache> downloadLiveInfo(int year, int month, int day, HttpServletResponse response) throws IOException {
-        final var liveInfoList = new ArrayList<LiveInfoCache>();
+    public static List<LiveInfo> downloadLiveInfo(int year, int month, int day, HttpServletResponse response) throws IOException {
+        final var liveInfoList = new ArrayList<LiveInfo>();
         // HTML情報を取得する
         final var url = String.format("https://wikiwiki.jp/nijisanji/?cmd=read&page=配信予定%%2F%04d-%02d-%02d",year, month, day);
         final var document = Jsoup.connect(url).get();
@@ -32,9 +30,8 @@ public class WebApi {
         // 配信情報を取得する
         final var liveInfoElements = document.select("ul.list1 > li");
         final var jst = ZoneId.of("JST", ZoneId.SHORT_IDS);
-        final var cacheDate = OffsetDateTime.now().withOffsetSameInstant(jst.getRules().getOffset(Instant.now()));
         for(final var liveInfoElement : liveInfoElements){
-            final var liveInfo = new LiveInfoCache();
+            final var liveInfo = new LiveInfo();
             // 配信時刻を抽出する
             {
                 // ■の手前が時刻表示部分のはず
@@ -107,10 +104,6 @@ public class WebApi {
                 liveInfo.setSite(temp3);
             }
             //リストに追加する
-            liveInfo.setYear(year);
-            liveInfo.setMonth(month);
-            liveInfo.setDay(day);
-            liveInfo.setCacheDate(cacheDate.toString());
             liveInfoList.add(liveInfo);
         }
         response.setStatus(HttpServletResponse.SC_OK);
