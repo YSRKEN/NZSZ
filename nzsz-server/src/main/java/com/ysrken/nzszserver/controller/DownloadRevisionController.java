@@ -18,7 +18,7 @@ import com.ysrken.nzszserver.model.Res;
 @SuppressWarnings("serial")
 @WebServlet("/api/revision/latest")
 public class DownloadRevisionController extends HttpServlet {
-	private final int revision = 8;
+	private final int revision = 10;
 
 	/**
 	 * 最新版のリビジョン番号を返す

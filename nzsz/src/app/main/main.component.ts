@@ -18,14 +18,14 @@ export class MainComponent implements OnInit {
   /** 選択されている日付 */
   Today: Date = new Date();
   /** ソフトウェアのバージョン */
-  Version: string = "Ver.0.9";
+  Version: string = "Ver.1.0";
   /** 最終更新日 */
-  LastUpdate: string = "2018/06/24";
+  LastUpdate: string = "2018/06/27";
   /** くるくる表示をするか？ */
   ProgressSpinnerFlg: boolean = false;
 
   /** リビジョン */
-  private readonly revision: number = 9;
+  private readonly revision: number = 10;
 
   /**
    * 配信予定を更新する
