@@ -4,30 +4,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatIconModule, MatListModule, MatProgressSpinnerModule, MatCheckboxModule } from '@angular/material';
 import { MainComponent } from './main/main.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LimitStrPipe } from './limit-str.pipe';
 import { OptionComponent } from './option/option.component';
-import { SettingsService } from './settings.service';
+import { SettingsService } from './service/settings.service';
 import { FormsModule } from '@angular/forms';
 import { TimerComponent } from './timer/timer.component';
-
-const appRoutes: Routes = [ // 追加
-  { path: '', component: MainComponent },
-  { path: 'option', component: OptionComponent },
-  { path: 'timer', component: TimerComponent }
-];
+import { WebApiService } from './service/webapi.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     CalendarComponent,
-    LimitStrPipe,
     OptionComponent,
     TimerComponent,
   ],
@@ -35,8 +27,7 @@ const appRoutes: Routes = [ // 追加
     HttpClientModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    RouterModule.forRoot(appRoutes),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -45,7 +36,7 @@ const appRoutes: Routes = [ // 追加
     MatProgressSpinnerModule,
     FormsModule
   ],
-  providers: [SettingsService],
+  providers: [SettingsService, WebApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

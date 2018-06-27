@@ -5,14 +5,16 @@
 <mat-list class="overflow-auto vh-42 my-1vh w-100"
   *ngIf="LiveInfoList.length > 0 && !ProgressSpinnerFlg">
   <mat-list-item *ngFor="let liveInfo of LiveInfoList">
-    <mat-icon mat-list-icon>person</mat-icon>
-    <div mat-line>
-      <span class="w-60 d-inline-block" (click)="jumpOtherPage(liveInfo.url)">{{liveInfo.site | limitStr: 12}}</span>
-      <span class="w-40 d-inline-block" (click)="setTimer(liveInfo)">{{liveInfo.date | date: 'yyyy/MM/dd'}}</span>
+    <div class="w-20" (click)="setTimer(liveInfo)">
+      {{liveInfo.date | date: 'HH:mm'}}
     </div>
-    <div mat-line>
-      <span class="w-60 d-inline-block" (click)="jumpOtherPage(liveInfo.url)">{{liveInfo.youtuber | limitStr: 12}}</span>
-      <span class="w-40 d-inline-block" (click)="setTimer(liveInfo)">{{liveInfo.date | date: 'HH:mm ～'}}</span>
+    <div class="w-80">
+      <div class="text-overflow w-100" (click)="jumpOtherPage(liveInfo.url)">
+        {{liveInfo.site}}
+      </div>
+      <div class="text-overflow w-100" (click)="jumpOtherPage(liveInfo.url)">
+        {{liveInfo.youtuber}}
+      </div>
     </div>
   </mat-list-item>
 </mat-list>

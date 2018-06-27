@@ -1,0 +1,5 @@
+nzsz-server/src/main/resources/static/
+sampledata.html
+nzsz-server/bin/
+nzsz-server/.settings/
+nzsz-server/target/
