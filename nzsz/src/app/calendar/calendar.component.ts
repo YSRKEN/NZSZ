@@ -5,9 +5,10 @@ import * as moment from 'moment';
  * 指定した日付におけるカレンダー表示を行う埋め込み用Component
  */
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+    selector: 'app-calendar',
+    templateUrl: './calendar.component.html',
+    styleUrls: ['./calendar.component.css'],
+    standalone: false
 })
 export class CalendarComponent implements OnInit {
   /** カレンダー情報 */

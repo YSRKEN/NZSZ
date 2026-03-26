@@ -5,11 +5,11 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MainComponent } from './main/main.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -26,7 +26,7 @@ import { WebApiService } from './service/webapi.service';
         OptionComponent,
         TimerComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
         BrowserAnimationsModule,
