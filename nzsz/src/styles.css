@@ -1,4 +1,4 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* Bootcamp風のCSSを実装 */
 .w-20{width: 20% !important;}
