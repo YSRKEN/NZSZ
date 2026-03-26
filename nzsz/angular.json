@@ -29,6 +29,10 @@
             "styles": [
               "src/styles.css"
             ],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "push.js"
+            ],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -81,6 +85,10 @@
             ],
             "styles": [
               "src/styles.css"
+            ],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "push.js"
             ],
             "scripts": [],
             "aot": false,
@@ -171,24 +179,6 @@
           "configurations": {
             "production": {
               "browserTarget": "nzsz:build:production"
-            }
-          }
-        }
-      }
-    },
-    "nzsz-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "nzsz:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "nzsz:serve:production"
             }
           }
         }
