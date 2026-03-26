@@ -115,18 +115,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "nzsz:build2"
+            "buildTarget": "nzsz:build2"
           },
           "configurations": {
             "production": {
-              "browserTarget": "nzsz:build2:production"
+              "buildTarget": "nzsz:build2:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nzsz:build"
+            "buildTarget": "nzsz:build"
           }
         },
         "test": {
