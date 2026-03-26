@@ -12,35 +12,28 @@ import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-l
 import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
 import { MainComponent } from './main/main.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { OptionComponent } from './option/option.component';
 import { SettingsService } from './service/settings.service';
 import { FormsModule } from '@angular/forms';
 import { TimerComponent } from './timer/timer.component';
 import { WebApiService } from './service/webapi.service';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    CalendarComponent,
-    OptionComponent,
-    TimerComponent,
-  ],
-  imports: [
-    HttpClientModule,
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    FormsModule
-  ],
-  providers: [SettingsService, WebApiService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        MainComponent,
+        CalendarComponent,
+        OptionComponent,
+        TimerComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        AppRoutingModule,
+        ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatIconModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        FormsModule], providers: [SettingsService, WebApiService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
