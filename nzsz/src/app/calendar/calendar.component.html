@@ -1,33 +1,37 @@
 <table class="w-100">
-    <tr>
-      <th colspan="7" class="text-center bg-lightblue vh-5">
-        <table class="w-100 mx-auto">
-          <tr>
-            <td><button class="min-width-0 min-height-0 font-size-vh-3 px-0 mx-2vw" (click)="backOneYear()" mat-button>◀</button></td>
-            <td><button class="min-width-0 min-height-0 font-size-vh-3 px-0 mx-2vw" (click)="backOneMonth()" mat-button>◁</button></td>
-            <td class="w-100 font-size-vh-3">{{ThisMonthString}}</td>
-            <td><button class="min-width-0 min-height-0 font-size-vh-3 px-0 mx-2vw" (click)="forwardOneMonth()" mat-button>▷</button></td>
-            <td><button class="min-width-0 min-height-0 font-size-vh-3 px-0 mx-2vw" (click)="forwardOneYear()" mat-button>▶</button></td>
-          </tr>
-        </table>
-      </th>
-    </tr>
+  <tr>
+    <th colspan="7" class="text-center bg-lightblue vh-5">
+      <table class="w-100 mx-auto">
+        <tr>
+          <td><button class="min-width-0 min-height-0 font-size-vh-3 px-0 mx-2vw" (click)="backOneYear()" mat-button>◀</button></td>
+          <td><button class="min-width-0 min-height-0 font-size-vh-3 px-0 mx-2vw" (click)="backOneMonth()" mat-button>◁</button></td>
+          <td class="w-100 font-size-vh-3">{{ThisMonthString}}</td>
+          <td><button class="min-width-0 min-height-0 font-size-vh-3 px-0 mx-2vw" (click)="forwardOneMonth()" mat-button>▷</button></td>
+          <td><button class="min-width-0 min-height-0 font-size-vh-3 px-0 mx-2vw" (click)="forwardOneYear()" mat-button>▶</button></td>
+        </tr>
+      </table>
+    </th>
+  </tr>
+  <tr class="vh-2_5">
+    <td class="text-center font-weight-bold color-red font-size-vh-2_5">日</td>
+    <td class="text-center font-weight-bold font-size-vh-2_5">月</td>
+    <td class="text-center font-weight-bold font-size-vh-2_5">火</td>
+    <td class="text-center font-weight-bold font-size-vh-2_5">水</td>
+    <td class="text-center font-weight-bold font-size-vh-2_5">木</td>
+    <td class="text-center font-weight-bold font-size-vh-2_5">金</td>
+    <td class="text-center font-weight-bold color-blue font-size-vh-2_5">土</td>
+  </tr>
+  @for (weekLine of CalendarTable; track weekLine) {
     <tr class="vh-2_5">
-      <td class="text-center font-weight-bold color-red font-size-vh-2_5">日</td>
-      <td class="text-center font-weight-bold font-size-vh-2_5">月</td>
-      <td class="text-center font-weight-bold font-size-vh-2_5">火</td>
-      <td class="text-center font-weight-bold font-size-vh-2_5">水</td>
-      <td class="text-center font-weight-bold font-size-vh-2_5">木</td>
-      <td class="text-center font-weight-bold font-size-vh-2_5">金</td>
-      <td class="text-center font-weight-bold color-blue font-size-vh-2_5">土</td>
-    </tr>
-    <tr class="vh-2_5" *ngFor="let weekLine of CalendarTable">
-      <td *ngFor="let dayData of weekLine" class="text-center font-size-vh-2_5"
+      @for (dayData of weekLine; track dayData) {
+        <td class="text-center font-size-vh-2_5"
         [ngClass]="{'bg-lightcoral':dayData.todayFlg,
           'bg-lightgray':!dayData.todayFlg,
           'color-gray': !dayData.thisMonthFlg}"
-        (click)="tap(dayData.date)">
+          (click)="tap(dayData.date)">
           {{dayData.value}}
-      </td>
+        </td>
+      }
     </tr>
+  }
 </table>
